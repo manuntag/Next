@@ -16,6 +16,7 @@
 #import "FourSquareAPIManager.h"
 #import "FoursquareObject.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
+#import "DetailViewController.h"
 
 
 
@@ -48,6 +49,12 @@
         NSLog(@"New Weather: %@, description: %@", self.currentWeather.description , self.currentWeather.detailDescription);
         
         
+        [self loadFoursquareObject];
+        [self loadFoursquareObject];
+        [self loadFoursquareObject];
+        [self loadFoursquareObject];
+        [self loadFoursquareObject];
+        [self loadFoursquareObject];
         [self loadFoursquareObject];
         [self loadFoursquareObject];
         [self loadFoursquareObject];
@@ -103,7 +110,7 @@
     
     FoursquareObject *currentObject = self.fourSquareObjects[indexPath.row];
     
-    // TODO: format rating text/ no reating placeholder
+    // TODO: format rating text/ no reating placeholder, calculate distance,
     
     cell.nameLabel.text = currentObject.name;
     cell.shortDescriptionLabel.text = currentObject.shortDescription;
@@ -114,6 +121,20 @@
     
     return cell;
 }
+
+
+#pragma mark - Segue
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+        FoursquareObject *detailFoursquareObject = self.fourSquareObjects[indexPath.row];
+        [[segue destinationViewController] setDetailFoursquareObject:detailFoursquareObject];
+    }
+}
+
 
 
 

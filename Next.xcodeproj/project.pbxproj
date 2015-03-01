@@ -23,6 +23,7 @@
 		E0B42DF21A9D0CA500413524 /* NextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B42DF11A9D0CA500413524 /* NextTests.m */; };
 		E0B465851AA29C5F00F8554B /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B465841AA29C5F00F8554B /* CollectionViewController.m */; };
 		E0B465881AA29EBA00F8554B /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B465871AA29EBA00F8554B /* CollectionViewCell.m */; };
+		E0B4658B1AA2BB2C00F8554B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B4658A1AA2BB2C00F8554B /* DetailViewController.m */; };
 		E0E1FD571A9D2891004749AF /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E0E1FD561A9D2891004749AF /* LocationManager.m */; };
 		E0E1FD591A9D32AF004749AF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0E1FD581A9D32AF004749AF /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,8 @@
 		E0B465841AA29C5F00F8554B /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		E0B465861AA29EBA00F8554B /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		E0B465871AA29EBA00F8554B /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		E0B465891AA2BB2C00F8554B /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		E0B4658A1AA2BB2C00F8554B /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		E0E1FD551A9D2891004749AF /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		E0E1FD561A9D2891004749AF /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		E0E1FD581A9D32AF004749AF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -141,6 +144,8 @@
 				E0B465841AA29C5F00F8554B /* CollectionViewController.m */,
 				E0B465861AA29EBA00F8554B /* CollectionViewCell.h */,
 				E0B465871AA29EBA00F8554B /* CollectionViewCell.m */,
+				E0B465891AA2BB2C00F8554B /* DetailViewController.h */,
+				E0B4658A1AA2BB2C00F8554B /* DetailViewController.m */,
 			);
 			name = "Controllers ";
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 				8A007B481A9ECEA90050CAC1 /* SugestionCalculator.m in Sources */,
 				E0B465851AA29C5F00F8554B /* CollectionViewController.m in Sources */,
 				E0B42DDB1A9D0CA500413524 /* AppDelegate.m in Sources */,
+				E0B4658B1AA2BB2C00F8554B /* DetailViewController.m in Sources */,
 				E0B42DD81A9D0CA500413524 /* main.m in Sources */,
 				E0B465881AA29EBA00F8554B /* CollectionViewCell.m in Sources */,
 				8A007B511A9FE4E30050CAC1 /* FourSquareAPIManager.m in Sources */,
