@@ -10,18 +10,19 @@
 		1F5CFF21A79C61DA107FD0A5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 244FC26327F36198BC9C7AD8 /* libPods.a */; };
 		8A007B481A9ECEA90050CAC1 /* SugestionCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A007B471A9ECEA90050CAC1 /* SugestionCalculator.m */; };
 		8A007B4C1A9F9FC40050CAC1 /* Reccomendations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A007B4B1A9F9FC40050CAC1 /* Reccomendations.m */; };
-		8A007B511A9FE4E30050CAC1 /* FourSquareApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A007B501A9FE4E30050CAC1 /* FourSquareApiManager.m */; };
+		8A007B511A9FE4E30050CAC1 /* FourSquareAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A007B501A9FE4E30050CAC1 /* FourSquareAPIManager.m */; };
 		8A007B541AA0151B0050CAC1 /* FoursquareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A007B531AA0151B0050CAC1 /* FoursquareObject.m */; };
 		8A25F3F51A9D240400123BCF /* Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A25F3F41A9D240400123BCF /* Time.m */; };
 		E009EDD11A9E8D3D00C0FB18 /* WeatherAPIMannager.m in Sources */ = {isa = PBXBuildFile; fileRef = E009EDD01A9E8D3D00C0FB18 /* WeatherAPIMannager.m */; };
 		E009EDD41A9ECFBE00C0FB18 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = E009EDD31A9ECFBE00C0FB18 /* Weather.m */; };
 		E0B42DD81A9D0CA500413524 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B42DD71A9D0CA500413524 /* main.m */; };
 		E0B42DDB1A9D0CA500413524 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B42DDA1A9D0CA500413524 /* AppDelegate.m */; };
-		E0B42DDE1A9D0CA500413524 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B42DDD1A9D0CA500413524 /* ViewController.m */; };
 		E0B42DE11A9D0CA500413524 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0B42DDF1A9D0CA500413524 /* Main.storyboard */; };
 		E0B42DE31A9D0CA500413524 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0B42DE21A9D0CA500413524 /* Images.xcassets */; };
 		E0B42DE61A9D0CA500413524 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B42DE41A9D0CA500413524 /* LaunchScreen.xib */; };
 		E0B42DF21A9D0CA500413524 /* NextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B42DF11A9D0CA500413524 /* NextTests.m */; };
+		E0B465851AA29C5F00F8554B /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B465841AA29C5F00F8554B /* CollectionViewController.m */; };
+		E0B465881AA29EBA00F8554B /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B465871AA29EBA00F8554B /* CollectionViewCell.m */; };
 		E0E1FD571A9D2891004749AF /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E0E1FD561A9D2891004749AF /* LocationManager.m */; };
 		E0E1FD591A9D32AF004749AF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0E1FD581A9D32AF004749AF /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
@@ -44,8 +45,8 @@
 		8A007B471A9ECEA90050CAC1 /* SugestionCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SugestionCalculator.m; path = ../SugestionCalculator.m; sourceTree = "<group>"; };
 		8A007B4A1A9F9FC40050CAC1 /* Reccomendations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reccomendations.h; path = ../Reccomendations.h; sourceTree = "<group>"; };
 		8A007B4B1A9F9FC40050CAC1 /* Reccomendations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reccomendations.m; path = ../Reccomendations.m; sourceTree = "<group>"; };
-		8A007B4F1A9FE4E30050CAC1 /* FourSquareApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FourSquareApiManager.h; path = ../FourSquareApiManager.h; sourceTree = "<group>"; };
-		8A007B501A9FE4E30050CAC1 /* FourSquareApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FourSquareApiManager.m; path = ../FourSquareApiManager.m; sourceTree = "<group>"; };
+		8A007B4F1A9FE4E30050CAC1 /* FourSquareAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FourSquareAPIManager.h; path = ../FourSquareAPIManager.h; sourceTree = "<group>"; };
+		8A007B501A9FE4E30050CAC1 /* FourSquareAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FourSquareAPIManager.m; path = ../FourSquareAPIManager.m; sourceTree = "<group>"; };
 		8A007B521AA0151B0050CAC1 /* FoursquareObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoursquareObject.h; path = ../FoursquareObject.h; sourceTree = "<group>"; };
 		8A007B531AA0151B0050CAC1 /* FoursquareObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoursquareObject.m; path = ../FoursquareObject.m; sourceTree = "<group>"; };
 		8A25F3F31A9D240400123BCF /* Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Time.h; path = ../Time.h; sourceTree = "<group>"; };
@@ -59,14 +60,16 @@
 		E0B42DD71A9D0CA500413524 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E0B42DD91A9D0CA500413524 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E0B42DDA1A9D0CA500413524 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E0B42DDC1A9D0CA500413524 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E0B42DDD1A9D0CA500413524 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E0B42DE01A9D0CA500413524 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E0B42DE21A9D0CA500413524 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E0B42DE51A9D0CA500413524 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E0B42DEB1A9D0CA500413524 /* NextTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NextTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0B42DF01A9D0CA500413524 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0B42DF11A9D0CA500413524 /* NextTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NextTests.m; sourceTree = "<group>"; };
+		E0B465831AA29C5F00F8554B /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		E0B465841AA29C5F00F8554B /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		E0B465861AA29EBA00F8554B /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		E0B465871AA29EBA00F8554B /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		E0E1FD551A9D2891004749AF /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		E0E1FD561A9D2891004749AF /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		E0E1FD581A9D32AF004749AF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -110,8 +113,8 @@
 				E009EDD01A9E8D3D00C0FB18 /* WeatherAPIMannager.m */,
 				E0E1FD551A9D2891004749AF /* LocationManager.h */,
 				E0E1FD561A9D2891004749AF /* LocationManager.m */,
-				8A007B4F1A9FE4E30050CAC1 /* FourSquareApiManager.h */,
-				8A007B501A9FE4E30050CAC1 /* FourSquareApiManager.m */,
+				8A007B4F1A9FE4E30050CAC1 /* FourSquareAPIManager.h */,
+				8A007B501A9FE4E30050CAC1 /* FourSquareAPIManager.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -134,8 +137,10 @@
 		8A007B4E1A9FD9E00050CAC1 /* Controllers  */ = {
 			isa = PBXGroup;
 			children = (
-				E0B42DDC1A9D0CA500413524 /* ViewController.h */,
-				E0B42DDD1A9D0CA500413524 /* ViewController.m */,
+				E0B465831AA29C5F00F8554B /* CollectionViewController.h */,
+				E0B465841AA29C5F00F8554B /* CollectionViewController.m */,
+				E0B465861AA29EBA00F8554B /* CollectionViewCell.h */,
+				E0B465871AA29EBA00F8554B /* CollectionViewCell.m */,
 			);
 			name = "Controllers ";
 			sourceTree = "<group>";
@@ -351,12 +356,13 @@
 				8A25F3F51A9D240400123BCF /* Time.m in Sources */,
 				8A007B4C1A9F9FC40050CAC1 /* Reccomendations.m in Sources */,
 				8A007B541AA0151B0050CAC1 /* FoursquareObject.m in Sources */,
-				E0B42DDE1A9D0CA500413524 /* ViewController.m in Sources */,
 				E009EDD11A9E8D3D00C0FB18 /* WeatherAPIMannager.m in Sources */,
 				8A007B481A9ECEA90050CAC1 /* SugestionCalculator.m in Sources */,
+				E0B465851AA29C5F00F8554B /* CollectionViewController.m in Sources */,
 				E0B42DDB1A9D0CA500413524 /* AppDelegate.m in Sources */,
 				E0B42DD81A9D0CA500413524 /* main.m in Sources */,
-				8A007B511A9FE4E30050CAC1 /* FourSquareApiManager.m in Sources */,
+				E0B465881AA29EBA00F8554B /* CollectionViewCell.m in Sources */,
+				8A007B511A9FE4E30050CAC1 /* FourSquareAPIManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +491,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -499,6 +506,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

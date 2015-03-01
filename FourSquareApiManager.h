@@ -10,13 +10,13 @@
 
 @class FoursquareObject;
 
-@interface FourSquareApiManager : AFHTTPSessionManager
+@interface FourSquareAPIManager : AFHTTPSessionManager
 
 @property (nonatomic, strong) NSDictionary * dictionary;
 
-+(FourSquareApiManager*)sharedInstance;
++ (FourSquareAPIManager*)sharedInstance;
 
--(void)getFoursquareObjectWithLocation:(CLLocation *)location randomReccomendation:(NSString*)randomReccomendation completion:(void (^)(FoursquareObject *))completion;
+- (void)getFoursquareObjectWithLocation:(CLLocation *)location randomReccomendation:(NSString*)randomReccomendation completion:(void (^)(FoursquareObject *))completion;
 
 
 @end
