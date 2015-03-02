@@ -136,6 +136,14 @@
     
     // TODO: format rating text/ no reating placeholder, calculate distance,
     
+    CGFloat red = arc4random()% 255/255.0;
+    CGFloat green = arc4random()% 255/255.0;
+    CGFloat blue = arc4random()% 255/255.0;
+    
+    UIColor * color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
+    
+    cell.imageFilterView.backgroundColor = color;
+    
     cell.nameLabel.text = currentObject.name;
     cell.shortDescriptionLabel.text = currentObject.shortDescription;
     cell.ratingLabel.text = [currentObject.rating stringValue];
