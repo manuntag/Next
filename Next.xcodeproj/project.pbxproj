@@ -10,7 +10,6 @@
 		1F5CFF21A79C61DA107FD0A5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 244FC26327F36198BC9C7AD8 /* libPods.a */; };
 		8A007B481A9ECEA90050CAC1 /* SugestionCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A007B471A9ECEA90050CAC1 /* SugestionCalculator.m */; };
 		8A007B4C1A9F9FC40050CAC1 /* Reccomendations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A007B4B1A9F9FC40050CAC1 /* Reccomendations.m */; };
-		8A007B511A9FE4E30050CAC1 /* FourSquareApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A007B501A9FE4E30050CAC1 /* FourSquareApiManager.m */; };
 		8A007B541AA0151B0050CAC1 /* FoursquareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A007B531AA0151B0050CAC1 /* FoursquareObject.m */; };
 		8A25F3F51A9D240400123BCF /* Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A25F3F41A9D240400123BCF /* Time.m */; };
 		E009EDD11A9E8D3D00C0FB18 /* WeatherAPIMannager.m in Sources */ = {isa = PBXBuildFile; fileRef = E009EDD01A9E8D3D00C0FB18 /* WeatherAPIMannager.m */; };
@@ -44,8 +43,6 @@
 		8A007B471A9ECEA90050CAC1 /* SugestionCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SugestionCalculator.m; path = ../SugestionCalculator.m; sourceTree = "<group>"; };
 		8A007B4A1A9F9FC40050CAC1 /* Reccomendations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reccomendations.h; path = ../Reccomendations.h; sourceTree = "<group>"; };
 		8A007B4B1A9F9FC40050CAC1 /* Reccomendations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reccomendations.m; path = ../Reccomendations.m; sourceTree = "<group>"; };
-		8A007B4F1A9FE4E30050CAC1 /* FourSquareApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FourSquareApiManager.h; path = ../FourSquareApiManager.h; sourceTree = "<group>"; };
-		8A007B501A9FE4E30050CAC1 /* FourSquareApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FourSquareApiManager.m; path = ../FourSquareApiManager.m; sourceTree = "<group>"; };
 		8A007B521AA0151B0050CAC1 /* FoursquareObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoursquareObject.h; path = ../FoursquareObject.h; sourceTree = "<group>"; };
 		8A007B531AA0151B0050CAC1 /* FoursquareObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoursquareObject.m; path = ../FoursquareObject.m; sourceTree = "<group>"; };
 		8A25F3F31A9D240400123BCF /* Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Time.h; path = ../Time.h; sourceTree = "<group>"; };
@@ -110,8 +107,6 @@
 				E009EDD01A9E8D3D00C0FB18 /* WeatherAPIMannager.m */,
 				E0E1FD551A9D2891004749AF /* LocationManager.h */,
 				E0E1FD561A9D2891004749AF /* LocationManager.m */,
-				8A007B4F1A9FE4E30050CAC1 /* FourSquareApiManager.h */,
-				8A007B501A9FE4E30050CAC1 /* FourSquareApiManager.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -356,7 +351,6 @@
 				8A007B481A9ECEA90050CAC1 /* SugestionCalculator.m in Sources */,
 				E0B42DDB1A9D0CA500413524 /* AppDelegate.m in Sources */,
 				E0B42DD81A9D0CA500413524 /* main.m in Sources */,
-				8A007B511A9FE4E30050CAC1 /* FourSquareApiManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
