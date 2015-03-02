@@ -48,6 +48,18 @@
         self.currentWeather = weather;
         NSLog(@"New Weather: %@, description: %@", self.currentWeather.description , self.currentWeather.detailDescription);
         
+        // test objects
+        [self loadFoursquareObject];
+        [self loadFoursquareObject];
+        [self loadFoursquareObject];
+        [self loadFoursquareObject];
+        [self loadFoursquareObject];
+        [self loadFoursquareObject];
+        [self loadFoursquareObject];
+        [self loadFoursquareObject];
+        [self loadFoursquareObject];
+        [self loadFoursquareObject];
+        
         
         [self loadFoursquareObject];
         [self loadFoursquareObject];
@@ -58,7 +70,8 @@
         [self loadFoursquareObject];
         [self loadFoursquareObject];
         [self loadFoursquareObject];
-        
+        [self loadFoursquareObject];
+     
     }];
 }
 
@@ -72,27 +85,38 @@
     
     [sugestionCalculator calculateReccomendationArray:partOfWeek sectionOfDay:sectionOfDay mainWeather:self.currentWeather.mainDescription];
     NSString *randomReccomendation = [sugestionCalculator randomRecomendedSection];
-    NSLog(@"%@", self.currentWeather.mainDescription);
- 
-    
+    NSLog(@"Calculated randomReccomendation: %@", randomReccomendation);
+    NSLog(@"Weather: %@", self.currentWeather.mainDescription);
+
 
     //add foursquare object to data source array
     [[FourSquareAPIManager sharedInstance] getFoursquareObjectWithLocation:[LocationManager sharedInstance].currentLocation randomReccomendation:randomReccomendation completion:^(FoursquareObject *fourSquareObject) {
         
-        [self.fourSquareObjects addObject:fourSquareObject];
-        NSLog(@"Foursquare objetcs array: %@", self.fourSquareObjects);
-        NSLog(@"New foursquare objetc name: %@", fourSquareObject.name);
-        
-        [self.collectionView reloadData];
+        if ([self isFoursquareobjectUnique:fourSquareObject]) {
+            [self.fourSquareObjects addObject:fourSquareObject];
+            NSLog(@"Foursquare objetcs array: %@", self.fourSquareObjects);
+            NSLog(@"New foursquare objetc name: %@", fourSquareObject.name);
+            [self.collectionView reloadData];
+        }
     }];
 
 }
 
 
+- (BOOL)isFoursquareobjectUnique:(FoursquareObject *)newObject
+{
+    for (FoursquareObject *object in self.fourSquareObjects) {
+        if ([object.name isEqualToString:newObject.name]) {
+            return NO;
+        }
+    }
+    
+    return YES;
+}
 
 
 
-#pragma mark <UICollectionViewDataSource>
+#pragma mark - UICollectionView Data Source
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
@@ -124,7 +148,6 @@
 
 
 #pragma mark - Segue
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

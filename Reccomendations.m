@@ -14,7 +14,8 @@
 -(NSArray*)loadWeekendActivitiesMorning {
     //art, shops, coffee, outdoors, sights, trending, specials, topPicks
     
-    self.weekendActivitiesMorning = [NSArray arrayWithObjects:@"art",@"shops", @"coffee", @"trending", @"specials", @"topPicks" ,nil];
+    self.weekendActivitiesMorning = [NSArray arrayWithObjects:@"shops", @"coffee",@"art" ,@"topPicks", @"specials", nil];
+
     
     return self.weekendActivitiesMorning;
     
