@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "LocationManager.h"
 
 
 @interface AppDelegate ()
@@ -19,6 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    
+    //[[LocationManager sharedInstance] startUpdatingLocation];
     
     return YES;
 }

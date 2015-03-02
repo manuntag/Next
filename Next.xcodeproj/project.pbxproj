@@ -14,13 +14,16 @@
 		8A25F3F51A9D240400123BCF /* Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A25F3F41A9D240400123BCF /* Time.m */; };
 		E009EDD11A9E8D3D00C0FB18 /* WeatherAPIMannager.m in Sources */ = {isa = PBXBuildFile; fileRef = E009EDD01A9E8D3D00C0FB18 /* WeatherAPIMannager.m */; };
 		E009EDD41A9ECFBE00C0FB18 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = E009EDD31A9ECFBE00C0FB18 /* Weather.m */; };
+		E07696451AA3EECE004E4485 /* FourSquareAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E07696441AA3EECE004E4485 /* FourSquareAPIManager.m */; };
+		E08DB40B1AA3F27F00232C3F /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B465871AA29EBA00F8554B /* CollectionViewCell.m */; };
 		E0B42DD81A9D0CA500413524 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B42DD71A9D0CA500413524 /* main.m */; };
 		E0B42DDB1A9D0CA500413524 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B42DDA1A9D0CA500413524 /* AppDelegate.m */; };
-		E0B42DDE1A9D0CA500413524 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B42DDD1A9D0CA500413524 /* ViewController.m */; };
 		E0B42DE11A9D0CA500413524 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0B42DDF1A9D0CA500413524 /* Main.storyboard */; };
 		E0B42DE31A9D0CA500413524 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0B42DE21A9D0CA500413524 /* Images.xcassets */; };
 		E0B42DE61A9D0CA500413524 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B42DE41A9D0CA500413524 /* LaunchScreen.xib */; };
 		E0B42DF21A9D0CA500413524 /* NextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B42DF11A9D0CA500413524 /* NextTests.m */; };
+		E0B465851AA29C5F00F8554B /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B465841AA29C5F00F8554B /* CollectionViewController.m */; };
+		E0B4658B1AA2BB2C00F8554B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B4658A1AA2BB2C00F8554B /* DetailViewController.m */; };
 		E0E1FD571A9D2891004749AF /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E0E1FD561A9D2891004749AF /* LocationManager.m */; };
 		E0E1FD591A9D32AF004749AF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0E1FD581A9D32AF004749AF /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
@@ -51,19 +54,25 @@
 		E009EDD01A9E8D3D00C0FB18 /* WeatherAPIMannager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherAPIMannager.m; sourceTree = "<group>"; };
 		E009EDD21A9ECFBE00C0FB18 /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
 		E009EDD31A9ECFBE00C0FB18 /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
+		E07696431AA3EECE004E4485 /* FourSquareAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourSquareAPIManager.h; sourceTree = "<group>"; };
+		E07696441AA3EECE004E4485 /* FourSquareAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourSquareAPIManager.m; sourceTree = "<group>"; };
 		E0B42DD21A9D0CA500413524 /* Next.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Next.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0B42DD61A9D0CA500413524 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0B42DD71A9D0CA500413524 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E0B42DD91A9D0CA500413524 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E0B42DDA1A9D0CA500413524 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E0B42DDC1A9D0CA500413524 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E0B42DDD1A9D0CA500413524 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E0B42DE01A9D0CA500413524 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E0B42DE21A9D0CA500413524 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E0B42DE51A9D0CA500413524 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E0B42DEB1A9D0CA500413524 /* NextTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NextTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0B42DF01A9D0CA500413524 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0B42DF11A9D0CA500413524 /* NextTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NextTests.m; sourceTree = "<group>"; };
+		E0B465831AA29C5F00F8554B /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		E0B465841AA29C5F00F8554B /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		E0B465861AA29EBA00F8554B /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		E0B465871AA29EBA00F8554B /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		E0B465891AA2BB2C00F8554B /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		E0B4658A1AA2BB2C00F8554B /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		E0E1FD551A9D2891004749AF /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		E0E1FD561A9D2891004749AF /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		E0E1FD581A9D32AF004749AF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -107,6 +116,8 @@
 				E009EDD01A9E8D3D00C0FB18 /* WeatherAPIMannager.m */,
 				E0E1FD551A9D2891004749AF /* LocationManager.h */,
 				E0E1FD561A9D2891004749AF /* LocationManager.m */,
+				E07696431AA3EECE004E4485 /* FourSquareAPIManager.h */,
+				E07696441AA3EECE004E4485 /* FourSquareAPIManager.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -129,8 +140,12 @@
 		8A007B4E1A9FD9E00050CAC1 /* Controllers  */ = {
 			isa = PBXGroup;
 			children = (
-				E0B42DDC1A9D0CA500413524 /* ViewController.h */,
-				E0B42DDD1A9D0CA500413524 /* ViewController.m */,
+				E0B465831AA29C5F00F8554B /* CollectionViewController.h */,
+				E0B465841AA29C5F00F8554B /* CollectionViewController.m */,
+				E0B465861AA29EBA00F8554B /* CollectionViewCell.h */,
+				E0B465871AA29EBA00F8554B /* CollectionViewCell.m */,
+				E0B465891AA2BB2C00F8554B /* DetailViewController.h */,
+				E0B4658A1AA2BB2C00F8554B /* DetailViewController.m */,
 			);
 			name = "Controllers ";
 			sourceTree = "<group>";
@@ -346,11 +361,14 @@
 				8A25F3F51A9D240400123BCF /* Time.m in Sources */,
 				8A007B4C1A9F9FC40050CAC1 /* Reccomendations.m in Sources */,
 				8A007B541AA0151B0050CAC1 /* FoursquareObject.m in Sources */,
-				E0B42DDE1A9D0CA500413524 /* ViewController.m in Sources */,
 				E009EDD11A9E8D3D00C0FB18 /* WeatherAPIMannager.m in Sources */,
 				8A007B481A9ECEA90050CAC1 /* SugestionCalculator.m in Sources */,
+				E0B465851AA29C5F00F8554B /* CollectionViewController.m in Sources */,
 				E0B42DDB1A9D0CA500413524 /* AppDelegate.m in Sources */,
+				E0B4658B1AA2BB2C00F8554B /* DetailViewController.m in Sources */,
 				E0B42DD81A9D0CA500413524 /* main.m in Sources */,
+				E08DB40B1AA3F27F00232C3F /* CollectionViewCell.m in Sources */,
+				E07696451AA3EECE004E4485 /* FourSquareAPIManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +497,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -493,6 +512,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

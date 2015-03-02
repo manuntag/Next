@@ -11,10 +11,10 @@
 @interface FoursquareObject : NSObject
 
 @property (nonatomic, strong) NSString * name;
-@property (nonatomic, strong) NSString * lat;
-@property (nonatomic, strong) NSString * lon;
+@property (nonatomic, strong) NSNumber * lat;
+@property (nonatomic, strong) NSNumber * lon;
 @property (nonatomic, strong) NSString * shortDescription;
-@property (nonatomic, strong) NSString * rating;
+@property (nonatomic, strong) NSNumber * rating;
 @property (nonatomic, strong) NSString * openingHours;
 @property (nonatomic, strong) NSURL * photoUrl;
 @property (nonatomic, strong) NSString * tip;
