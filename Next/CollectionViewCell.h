@@ -17,6 +17,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (strong, nonatomic) IBOutlet UIView *imageFilterView;
 
+-(instancetype)init;
+
+- (void)setUpColor;
+
+- (void)cutomizeRatingLabel;
 // TODO: create custom initializer
 
 @end

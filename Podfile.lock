@@ -20,11 +20,14 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - HexColors (2.2.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - HexColors (~> 2.2)
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
+  HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
 
 COCOAPODS: 0.35.0

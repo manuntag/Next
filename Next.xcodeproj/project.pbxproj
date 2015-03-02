@@ -11,6 +11,7 @@
 		8A007B481A9ECEA90050CAC1 /* SugestionCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A007B471A9ECEA90050CAC1 /* SugestionCalculator.m */; };
 		8A007B4C1A9F9FC40050CAC1 /* Reccomendations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A007B4B1A9F9FC40050CAC1 /* Reccomendations.m */; };
 		8A007B541AA0151B0050CAC1 /* FoursquareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A007B531AA0151B0050CAC1 /* FoursquareObject.m */; };
+		8A0891EE1AA40C8600CE27E7 /* ColorLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0891ED1AA40C8600CE27E7 /* ColorLibrary.m */; };
 		8A25F3F51A9D240400123BCF /* Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A25F3F41A9D240400123BCF /* Time.m */; };
 		E009EDD11A9E8D3D00C0FB18 /* WeatherAPIMannager.m in Sources */ = {isa = PBXBuildFile; fileRef = E009EDD01A9E8D3D00C0FB18 /* WeatherAPIMannager.m */; };
 		E009EDD41A9ECFBE00C0FB18 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = E009EDD31A9ECFBE00C0FB18 /* Weather.m */; };
@@ -48,6 +49,8 @@
 		8A007B4B1A9F9FC40050CAC1 /* Reccomendations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reccomendations.m; path = ../Reccomendations.m; sourceTree = "<group>"; };
 		8A007B521AA0151B0050CAC1 /* FoursquareObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoursquareObject.h; path = ../FoursquareObject.h; sourceTree = "<group>"; };
 		8A007B531AA0151B0050CAC1 /* FoursquareObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoursquareObject.m; path = ../FoursquareObject.m; sourceTree = "<group>"; };
+		8A0891EC1AA40C8600CE27E7 /* ColorLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorLibrary.h; path = ../ColorLibrary.h; sourceTree = "<group>"; };
+		8A0891ED1AA40C8600CE27E7 /* ColorLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorLibrary.m; path = ../ColorLibrary.m; sourceTree = "<group>"; };
 		8A25F3F31A9D240400123BCF /* Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Time.h; path = ../Time.h; sourceTree = "<group>"; };
 		8A25F3F41A9D240400123BCF /* Time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Time.m; path = ../Time.m; sourceTree = "<group>"; };
 		E009EDCF1A9E8D3D00C0FB18 /* WeatherAPIMannager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherAPIMannager.h; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 		E0B42DD51A9D0CA500413524 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8A0891EC1AA40C8600CE27E7 /* ColorLibrary.h */,
+				8A0891ED1AA40C8600CE27E7 /* ColorLibrary.m */,
 				E0B42DE21A9D0CA500413524 /* Images.xcassets */,
 				E0B42DE41A9D0CA500413524 /* LaunchScreen.xib */,
 				E0B42DD91A9D0CA500413524 /* AppDelegate.h */,
@@ -363,6 +368,7 @@
 				8A007B541AA0151B0050CAC1 /* FoursquareObject.m in Sources */,
 				E009EDD11A9E8D3D00C0FB18 /* WeatherAPIMannager.m in Sources */,
 				8A007B481A9ECEA90050CAC1 /* SugestionCalculator.m in Sources */,
+				8A0891EE1AA40C8600CE27E7 /* ColorLibrary.m in Sources */,
 				E0B465851AA29C5F00F8554B /* CollectionViewController.m in Sources */,
 				E0B42DDB1A9D0CA500413524 /* AppDelegate.m in Sources */,
 				E0B4658B1AA2BB2C00F8554B /* DetailViewController.m in Sources */,

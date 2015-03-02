@@ -17,6 +17,7 @@
 #import "FoursquareObject.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "DetailViewController.h"
+#import "ColorLibrary.h"
 
 
 
@@ -24,7 +25,7 @@
 
 @property (nonatomic, strong) Weather *currentWeather;
 @property (nonatomic, strong) NSMutableArray *fourSquareObjects;
-
+@property (nonatomic, strong) LocationManager * locationManager;
 @end
 
 @implementation CollectionViewController
@@ -32,6 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -39,7 +41,13 @@
     self.fourSquareObjects = [NSMutableArray array];
     
     
-    [[LocationManager sharedInstance] startUpdatingLocation];
+    self.locationManager = [LocationManager sharedInstance];
+    
+    [self.locationManager startUpdatingLocation];
+
+    
+//    [[LocationManager sharedInstance] startUpdatingLocation];
+
     
     
     // TODO: we should make sure that locationManager object exist before we call weather api
@@ -71,11 +79,12 @@
         [self loadFoursquareObject];
         [self loadFoursquareObject];
         [self loadFoursquareObject];
+        
+        
      
     }];
+    
 }
-
-
 
 - (void)loadFoursquareObject
 {
@@ -135,20 +144,44 @@
     FoursquareObject *currentObject = self.fourSquareObjects[indexPath.row];
     
     // TODO: format rating text/ no reating placeholder, calculate distance,
-    
-    CGFloat red = arc4random()% 255/255.0;
-    CGFloat green = arc4random()% 255/255.0;
-    CGFloat blue = arc4random()% 255/255.0;
-    
-    UIColor * color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
-    
-    cell.imageFilterView.backgroundColor = color;
+
     
     cell.nameLabel.text = currentObject.name;
     cell.shortDescriptionLabel.text = currentObject.shortDescription;
-    cell.ratingLabel.text = [currentObject.rating stringValue];
-    cell.distanceLabel.text = @"X minutes";
+    
+    
+    if ([currentObject.rating floatValue]==0.0) {
+     cell.ratingLabel.text = @"N/A";
+        
+    }else {
+    cell.ratingLabel.text = [NSString  stringWithFormat:@"%.1f", [currentObject.rating floatValue]];
+    }
+    
+    CLLocation * foursquareObjectLocation = [[CLLocation alloc]initWithLatitude:[currentObject.lat doubleValue]longitude:[currentObject.lon doubleValue]];
+    
+    
+    
+    float lat = self.locationManager.currentLocation.coordinate.latitude;
+    float lon = self.locationManager.currentLocation.coordinate.longitude;
+    
+    NSLog(@"\n test lat:%f \n test lon:%f ", lat, lon);
+    
+    CLLocation * currentLocationCoordinate = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
+    
+    CLLocationDistance dist = [foursquareObjectLocation distanceFromLocation:currentLocationCoordinate];
+    
+    // "minutes away calculation"
+    
+    float minsAway = dist/50;
+    
+    cell.distanceLabel.text = [NSString stringWithFormat:@"%.2f minutes away", minsAway];
     cell.weatherDescriptionLabel.text = self.currentWeather.detailDescription;
+    
+    // 50m /min
+    
+    [cell setUpColor];
+    [cell cutomizeRatingLabel];
+    
     [cell.backgroundImageView setImageWithURL:currentObject.photoUrl];
     
     return cell;
