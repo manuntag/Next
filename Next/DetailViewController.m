@@ -28,10 +28,6 @@ MKRoute * routeDetails;
     self.fourSquareObjectMapView.delegate = self;
     self.fourSquareObjectMapView.showsUserLocation = true;
     
-    self.locationManager = [LocationManager sharedInstance];
-    [self.locationManager startUpdatingLocation];
-
-    
     [self addDirectionsToFourSquareObject];
     
 }
