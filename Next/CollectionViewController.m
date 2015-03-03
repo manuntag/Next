@@ -25,7 +25,7 @@
 
 @property (nonatomic, strong) Weather *currentWeather;
 @property (nonatomic, strong) NSMutableArray *fourSquareObjects;
-@property (nonatomic, strong) LocationManager * locationManager;
+
 @end
 
 @implementation CollectionViewController
@@ -34,21 +34,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
     // Data source
     self.fourSquareObjects = [NSMutableArray array];
     
-    
-    self.locationManager = [LocationManager sharedInstance];
-    
-    [self.locationManager startUpdatingLocation];
-
-    
-//    [[LocationManager sharedInstance] startUpdatingLocation];
-
-    
+   [[LocationManager sharedInstance] startUpdatingLocation];
     
     // TODO: we should make sure that locationManager object exist before we call weather api
     [[WeatherAPIMannager sharedInstance] getWheatherDescriptionForLocation:[LocationManager sharedInstance].currentLocation completion:^(Weather *weather) {
@@ -125,7 +114,6 @@
 }
 
 
-
 #pragma mark - UICollectionView Data Source
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -155,28 +143,8 @@
     cell.ratingLabel.text = [NSString  stringWithFormat:@"%.1f", [currentObject.rating floatValue]];
     }
     
-    CLLocation * foursquareObjectLocation = [[CLLocation alloc]initWithLatitude:[currentObject.lat doubleValue]longitude:[currentObject.lon doubleValue]];
-
-//    float lat = [LocationManager sharedInstance].currentLocation.coordinate.latitude;
-//    float lon = [LocationManager sharedInstance].currentLocation.coordinate.longitude;
-    
-    float lat = self.locationManager.currentLocation.coordinate.latitude;
-    float lon = self.locationManager.currentLocation.coordinate.longitude;
-    
-    NSLog(@"\n test lat:%f \n test lon:%f ", lat, lon);
-    
-    CLLocation * currentLocationCoordinate = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
-    
-    CLLocationDistance dist = [foursquareObjectLocation distanceFromLocation:currentLocationCoordinate];
-    
-    // "minutes away calculation"
-    
-    float minsAway = dist/50;
-    
-    cell.distanceLabel.text = [NSString stringWithFormat:@"%.f minute walk", minsAway];
+    cell.distanceLabel.text = [NSString stringWithFormat:@"%.f minute walk", [self calculateWalkingTime:currentObject]];
     cell.weatherDescriptionLabel.text = self.currentWeather.detailDescription;
-    
-    // 50m /min
     
     [cell setUpColor];
     [cell cutomizeRatingLabel];
@@ -184,6 +152,27 @@
     [cell.backgroundImageView setImageWithURL:currentObject.photoUrl];
     
     return cell;
+}
+
+
+
+-(float)calculateWalkingTime:(FoursquareObject*)foursquareObject {
+    
+    float minsAway;
+
+    // "minutes away calculation" : calculation based on average human walking at 50m /min
+    
+    float lat = [LocationManager sharedInstance].currentLocation.coordinate.latitude;
+    float lon = [LocationManager sharedInstance].currentLocation.coordinate.longitude;
+    
+    CLLocation * currentLocationCoordinate = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
+    
+    CLLocation * foursquareObjectLocation = [[CLLocation alloc]initWithLatitude:[foursquareObject.lat doubleValue]longitude:[foursquareObject.lon doubleValue]];
+    
+    CLLocationDistance dist = [foursquareObjectLocation distanceFromLocation:currentLocationCoordinate];
+    
+    return minsAway = dist/50;
+    
 }
 
 
