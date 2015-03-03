@@ -20,26 +20,44 @@
 #import "ColorLibrary.h"
 
 
+static int const NumberOfRequestedObjects = 10;
 
 @interface CollectionViewController ()
 
 @property (nonatomic, strong) Weather *currentWeather;
 @property (nonatomic, strong) NSMutableArray *fourSquareObjects;
 
+
 @end
 
 @implementation CollectionViewController
 
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     
     // Data source
     self.fourSquareObjects = [NSMutableArray array];
     
    [[LocationManager sharedInstance] startUpdatingLocation];
     
-    // TODO: we should make sure that locationManager object exist before we call weather api
+    // check if we are getting location, so we can fetch weather and foursquare objects
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(fetchData)
+                                                 name:@"didUpdateLocation"
+                                               object:[LocationManager sharedInstance]];
+}
+
+
+-(void)fetchData
+{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+
     [[WeatherAPIMannager sharedInstance] getWheatherDescriptionForLocation:[LocationManager sharedInstance].currentLocation completion:^(Weather *weather) {
         
         self.currentWeather = weather;
@@ -58,6 +76,9 @@
         [self loadFoursquareObject];
     
         
+        for (int i = 1; i <= NumberOfRequestedObjects; i++) {
+            [self generateRandomRecomendation];
+        }
         
         [self loadFoursquareObject];
         [self loadFoursquareObject];
@@ -85,8 +106,14 @@
     [sugestionCalculator calculateReccomendationArray:partOfWeek sectionOfDay:sectionOfDay mainWeather:self.currentWeather.mainDescription];
     NSString *randomReccomendation = [sugestionCalculator randomRecomendedSection];
     NSLog(@"Calculated randomReccomendation: %@", randomReccomendation);
-    NSLog(@"Weather: %@", self.currentWeather.mainDescription);
+    
+    [self loadFoursquareObjectForRandomRecomendation:randomReccomendation];
+    
+    
+}
 
+- (void)loadFoursquareObjectForRandomRecomendation:(NSString *)randomReccomendation
+{
 
     //add foursquare object to data source array
     [[FourSquareAPIManager sharedInstance] getFoursquareObjectWithLocation:[LocationManager sharedInstance].currentLocation randomReccomendation:randomReccomendation completion:^(FoursquareObject *fourSquareObject) {
@@ -102,14 +129,16 @@
 }
 
 
+
+
 - (BOOL)isFoursquareobjectUnique:(FoursquareObject *)newObject
 {
     for (FoursquareObject *object in self.fourSquareObjects) {
         if ([object.name isEqualToString:newObject.name]) {
+            NSLog(@"Duplicate Object");
             return NO;
         }
     }
-    
     return YES;
 }
 
@@ -129,6 +158,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    
+
     
     FoursquareObject *currentObject = self.fourSquareObjects[indexPath.row];
     

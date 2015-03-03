@@ -14,7 +14,7 @@ static NSString *const FoursquareClientIDString = @"AEMB5NXEBITYUKAGQLROMYCXWN4P
 static NSString *const FoursquareClientSecret = @"T3NGIC1CUHA1ZE4BHWG15R14G4ORYGRGLIMAG2VMFQBNZSZW";
 static NSString *const FoursquareAPIVersion = @"20140806";
 static NSString *const FoursquareRadius = @"100000";
-static NSString *const FoursquareLimit =@"5";
+static NSString *const FoursquareLimit =@"100";
 
 @implementation FourSquareAPIManager
 
@@ -82,8 +82,7 @@ static NSString *const FoursquareLimit =@"5";
             }
         });
         
-        
-        
+
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"FAILURE TO RETRIEVE FOURSQAURE DICTIONARY DATA");
     }];
