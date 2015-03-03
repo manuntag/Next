@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (strong, nonatomic) IBOutlet UIView *imageFilterView;
 
--(instancetype)init;
+//-(instancetype)init;
 
 - (void)setUpColor;
 

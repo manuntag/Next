@@ -67,6 +67,7 @@
         [self loadFoursquareObject];
         [self loadFoursquareObject];
         [self loadFoursquareObject];
+    
         
         
         [self loadFoursquareObject];
@@ -158,8 +159,9 @@
     }
     
     CLLocation * foursquareObjectLocation = [[CLLocation alloc]initWithLatitude:[currentObject.lat doubleValue]longitude:[currentObject.lon doubleValue]];
-    
-    
+
+//    float lat = [LocationManager sharedInstance].currentLocation.coordinate.latitude;
+//    float lon = [LocationManager sharedInstance].currentLocation.coordinate.longitude;
     
     float lat = self.locationManager.currentLocation.coordinate.latitude;
     float lon = self.locationManager.currentLocation.coordinate.longitude;
@@ -174,7 +176,7 @@
     
     float minsAway = dist/50;
     
-    cell.distanceLabel.text = [NSString stringWithFormat:@"%.2f minutes away", minsAway];
+    cell.distanceLabel.text = [NSString stringWithFormat:@"%.f minutes away", minsAway];
     cell.weatherDescriptionLabel.text = self.currentWeather.detailDescription;
     
     // 50m /min
