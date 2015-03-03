@@ -19,15 +19,19 @@
 #import "DetailViewController.h"
 
 
+static int const NumberOfRequestedObjects = 10;
 
 @interface CollectionViewController ()
 
 @property (nonatomic, strong) Weather *currentWeather;
 @property (nonatomic, strong) NSMutableArray *fourSquareObjects;
 
+
 @end
 
 @implementation CollectionViewController
+
+
 
 
 - (void)viewDidLoad {
@@ -35,49 +39,42 @@
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
     
+    
     // Data source
     self.fourSquareObjects = [NSMutableArray array];
-    
     
     [[LocationManager sharedInstance] startUpdatingLocation];
     
     
-    // TODO: we should make sure that locationManager object exist before we call weather api
+    // check if we are getting location, so we can fetch weather and foursquare objects
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(fetchData)
+                                                 name:@"didUpdateLocation"
+                                               object:[LocationManager sharedInstance]];
+}
+
+
+-(void)fetchData
+{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+
     [[WeatherAPIMannager sharedInstance] getWheatherDescriptionForLocation:[LocationManager sharedInstance].currentLocation completion:^(Weather *weather) {
         
         self.currentWeather = weather;
         NSLog(@"New Weather: %@, description: %@", self.currentWeather.description , self.currentWeather.detailDescription);
         
-        // test objects
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
         
+        for (int i = 1; i <= NumberOfRequestedObjects; i++) {
+            [self generateRandomRecomendation];
+        }
         
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-     
     }];
 }
 
 
-
-- (void)loadFoursquareObject
+- (void)generateRandomRecomendation
 {
     SugestionCalculator * sugestionCalculator = [[SugestionCalculator alloc]init];
     NSString * partOfWeek = [Time partOfWeek];
@@ -86,8 +83,14 @@
     [sugestionCalculator calculateReccomendationArray:partOfWeek sectionOfDay:sectionOfDay mainWeather:self.currentWeather.mainDescription];
     NSString *randomReccomendation = [sugestionCalculator randomRecomendedSection];
     NSLog(@"Calculated randomReccomendation: %@", randomReccomendation);
-    NSLog(@"Weather: %@", self.currentWeather.mainDescription);
+    
+    [self loadFoursquareObjectForRandomRecomendation:randomReccomendation];
+    
+    
+}
 
+- (void)loadFoursquareObjectForRandomRecomendation:(NSString *)randomReccomendation
+{
 
     //add foursquare object to data source array
     [[FourSquareAPIManager sharedInstance] getFoursquareObjectWithLocation:[LocationManager sharedInstance].currentLocation randomReccomendation:randomReccomendation completion:^(FoursquareObject *fourSquareObject) {
@@ -103,16 +106,19 @@
 }
 
 
+
+
 - (BOOL)isFoursquareobjectUnique:(FoursquareObject *)newObject
 {
     for (FoursquareObject *object in self.fourSquareObjects) {
         if ([object.name isEqualToString:newObject.name]) {
+            NSLog(@"Duplicate Object");
             return NO;
         }
     }
-    
     return YES;
 }
+
 
 
 
@@ -132,6 +138,9 @@
     
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
+    
+
+    
     FoursquareObject *currentObject = self.fourSquareObjects[indexPath.row];
     
     // TODO: format rating text/ no reating placeholder, calculate distance,
@@ -141,10 +150,27 @@
     cell.ratingLabel.text = [currentObject.rating stringValue];
     cell.distanceLabel.text = @"X minutes";
     cell.weatherDescriptionLabel.text = self.currentWeather.detailDescription;
+    
+    
     [cell.backgroundImageView setImageWithURL:currentObject.photoUrl];
     
     return cell;
 }
+
+
+#pragma mark - UICollectionView Delegate
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+//    if (indexPath.row <= [self.fourSquareObjects count] -1 ) {
+//        
+//        [self loadFoursquareObject];
+//        NSLog(@"Loading new objects!!!!!!");
+//        
+//    }
+
+}
+
 
 
 #pragma mark - Segue
