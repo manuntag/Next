@@ -42,7 +42,8 @@ static int const NumberOfRequestedObjects = 10;
     // Data source
     self.fourSquareObjects = [NSMutableArray array];
     
-   [[LocationManager sharedInstance] startUpdatingLocation];
+    [[LocationManager sharedInstance] startUpdatingLocation];
+    
     
     // check if we are getting location, so we can fetch weather and foursquare objects
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -63,41 +64,16 @@ static int const NumberOfRequestedObjects = 10;
         self.currentWeather = weather;
         NSLog(@"New Weather: %@, description: %@", self.currentWeather.description , self.currentWeather.detailDescription);
         
-        // test objects
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-    
         
         for (int i = 1; i <= NumberOfRequestedObjects; i++) {
             [self generateRandomRecomendation];
         }
         
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        [self loadFoursquareObject];
-        
-        
-     
     }];
-    
 }
 
-- (void)loadFoursquareObject
+
+- (void)generateRandomRecomendation
 {
     SugestionCalculator * sugestionCalculator = [[SugestionCalculator alloc]init];
     NSString * partOfWeek = [Time partOfWeek];
@@ -141,6 +117,8 @@ static int const NumberOfRequestedObjects = 10;
     }
     return YES;
 }
+
+
 
 
 #pragma mark - UICollectionView Data Source
@@ -206,6 +184,7 @@ static int const NumberOfRequestedObjects = 10;
     return minsAway = dist/50;
     
 }
+
 
 
 #pragma mark - Segue
