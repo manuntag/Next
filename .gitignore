@@ -17,5 +17,6 @@ DerivedData
 *.ipa
 *.xcuserstate
 
+Breakpoints.xcbkptlist
 Pods/
 
