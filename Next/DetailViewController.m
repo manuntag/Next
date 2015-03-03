@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "FoursquareObject.h"
+#import "HexColor.h"
 
 
 @interface DetailViewController ()
@@ -30,6 +31,8 @@ MKRoute * routeDetails;
     self.locationManager = [LocationManager sharedInstance];
     [self.locationManager startUpdatingLocation];
 
+    
+    [self addDirectionsToFourSquareObject];
     
 }
 
@@ -56,50 +59,56 @@ MKRoute * routeDetails;
         marker.title = self.detailFoursquareObject.name;
         
         [self.fourSquareObjectMapView addAnnotation:marker];
-        
-       CLLocationCoordinate2D destinationCoordinates =  CLLocationCoordinate2DMake([self.detailFoursquareObject.lat doubleValue], [self.detailFoursquareObject.lon doubleValue]);
-        
-       MKPlacemark * fourSquareObjectplaceMark = [[MKPlacemark alloc]initWithCoordinate:destinationCoordinates addressDictionary:nil];
-        
-        MKDirectionsRequest * directionsRequest = [[MKDirectionsRequest alloc]init];
-        [directionsRequest setSource:[MKMapItem mapItemForCurrentLocation]];
-        [directionsRequest setDestination:[[MKMapItem alloc]initWithPlacemark:fourSquareObjectplaceMark]];
-        directionsRequest.transportType = MKDirectionsTransportTypeWalking;
-        
-        MKDirections * directions = [[MKDirections alloc]initWithRequest:directionsRequest];
-        
-        [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
-            
-            
-            if (error) {
-                
-                NSLog(@"Error %@", error.description);
-                
-            }else {
-           
-                routeDetails = response.routes.lastObject;
-                [self.fourSquareObjectMapView addOverlay:routeDetails.polyline];
-                NSLog(@"\n%f", routeDetails.distance);
-            
-                self.allSteps = @"";
-                for (int i = 0; i < routeDetails.steps.count; i++) {
-                    MKRouteStep *step = [routeDetails.steps objectAtIndex:i];
-                    NSString *newStep = step.instructions;
-                    self.allSteps = [self.allSteps stringByAppendingString:newStep];
-                    self.allSteps = [self.allSteps stringByAppendingString:@"\n\n"];
-                    
-                    NSLog(@"\n\n%@", self.allSteps);
-                    
-                }
-                
-            }
-            
-        }];
-        
+    
 
     }
 
     
+}
+
+
+
+-(void)addDirectionsToFourSquareObject {
+    
+    CLLocationCoordinate2D destinationCoordinates =  CLLocationCoordinate2DMake([self.detailFoursquareObject.lat doubleValue], [self.detailFoursquareObject.lon doubleValue]);
+    
+    MKPlacemark * fourSquareObjectplaceMark = [[MKPlacemark alloc]initWithCoordinate:destinationCoordinates addressDictionary:nil];
+    
+    MKDirectionsRequest * directionsRequest = [[MKDirectionsRequest alloc]init];
+    [directionsRequest setSource:[MKMapItem mapItemForCurrentLocation]];
+    [directionsRequest setDestination:[[MKMapItem alloc]initWithPlacemark:fourSquareObjectplaceMark]];
+    directionsRequest.transportType = MKDirectionsTransportTypeWalking;
+    
+    MKDirections * directions = [[MKDirections alloc]initWithRequest:directionsRequest];
+    
+    [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+        
+        
+        if (error) {
+            
+            NSLog(@"Error %@", error.description);
+            
+        }else {
+            
+            routeDetails = response.routes.lastObject;
+            [self.fourSquareObjectMapView addOverlay:routeDetails.polyline];
+            NSLog(@"\n%f", routeDetails.distance);
+            
+            self.allSteps = @"";
+            for (int i = 0; i < routeDetails.steps.count; i++) {
+                MKRouteStep *step = [routeDetails.steps objectAtIndex:i];
+                NSString *newStep = step.instructions;
+                self.allSteps = [self.allSteps stringByAppendingString:newStep];
+                self.allSteps = [self.allSteps stringByAppendingString:@"\n\n"];
+                
+                NSLog(@"\n\n%@", self.allSteps);
+                
+            }
+            
+        }
+        
+    }];
+
 }
 
 
@@ -137,6 +146,17 @@ MKRoute * routeDetails;
     self.directionsView.alpha = 1.0;
     
     
+}
+
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
+{
+    MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+    renderer.strokeColor = [UIColor blueColor];
+    renderer.alpha = 0.7;
+    renderer.lineWidth = 4.0;
+    
+    return renderer;
 }
 
 

@@ -32,7 +32,7 @@
     
     UIColor * purple1 = [UIColor colorWithHexString:@"#5D5179" alpha:1.0];
     
-    UIColor * green1 = [UIColor colorWithHexString:@"#00ab84" alpha:1.0];
+    UIColor * green1 = [UIColor colorWithHexString:@"#1c6d6a" alpha:1.0];
     UIColor * green2 = [UIColor colorWithHexString:@"#137d79" alpha:1.0];
     UIColor * green3 = [UIColor colorWithHexString:@"#247e6f" alpha:1.0];
     UIColor * green4 = [UIColor colorWithHexString:@"#21797c" alpha:1.0];

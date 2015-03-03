@@ -144,9 +144,6 @@
     
     FoursquareObject *currentObject = self.fourSquareObjects[indexPath.row];
     
-    // TODO: format rating text/ no reating placeholder, calculate distance,
-
-    
     cell.nameLabel.text = currentObject.name;
     cell.shortDescriptionLabel.text = currentObject.shortDescription;
     
@@ -176,7 +173,7 @@
     
     float minsAway = dist/50;
     
-    cell.distanceLabel.text = [NSString stringWithFormat:@"%.f minutes away", minsAway];
+    cell.distanceLabel.text = [NSString stringWithFormat:@"%.f minute walk", minsAway];
     cell.weatherDescriptionLabel.text = self.currentWeather.detailDescription;
     
     // 50m /min
