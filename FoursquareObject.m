@@ -16,22 +16,22 @@
     
     if (self = [super init]) {
         
-        self.name = dictionary[@"venue"][@"name"];
-        self.lat = dictionary[@"venue"][@"location"][@"lat"];
-        self.lon = dictionary[@"venue"][@"location"][@"lng"];
+        _name = dictionary[@"venue"][@"name"];
+        _lat = dictionary[@"venue"][@"location"][@"lat"];
+        _lon = dictionary[@"venue"][@"location"][@"lng"];
         
         //short description
         NSArray * shortDescriptionArray = dictionary[@"venue"][@"categories"];
         NSDictionary *shortDescriptionDictionary= [shortDescriptionArray firstObject];
-        self.shortDescription = shortDescriptionDictionary[@"shortName"];
+        _shortDescription = shortDescriptionDictionary[@"shortName"];
     
-        self.rating = dictionary[@"venue"][@"rating"];
-        self.openingHours = dictionary[@"venue"][@"hours"][@"status"];
+        _rating = dictionary[@"venue"][@"rating"];
+        _openingHours = dictionary[@"venue"][@"hours"][@"status"];
         
         //tip
         NSArray *tipArray = dictionary[@"tips"];
         NSDictionary *tipDictionary = [tipArray firstObject];
-        self.tip = tipDictionary[@"text"];
+        _tip = tipDictionary[@"text"];
         
         //photo
         NSArray * photosGroupArray =dictionary[@"venue"][@"photos"][@"groups"];
@@ -44,7 +44,9 @@
         NSString * photoSuffix = photoItemDictionary[@"suffix"];
         NSString * photoResolution = @"300x300";
         NSString * photoUrlString = [NSString stringWithFormat:@"%@%@%@", photoPrefix,photoResolution,photoSuffix];
-        self.photoUrl = [NSURL URLWithString:photoUrlString];
+        _photoUrl = [NSURL URLWithString:photoUrlString];
+         
+        _phoneNumber = dictionary[@"venue"][@"contact"][@"phone"]; //formattedPhone ??
         
     }
     return self;

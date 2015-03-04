@@ -20,7 +20,7 @@
 #import "ColorLibrary.h"
 
 
-static int const NumberOfRequestedObjects = 10;
+static int const NumberOfRequestedObjects = 20;
 
 @interface CollectionViewController ()
 
@@ -99,6 +99,7 @@ static int const NumberOfRequestedObjects = 10;
             NSLog(@"Foursquare objetcs array: %@", self.fourSquareObjects);
             NSLog(@"New foursquare objetc name: %@", fourSquareObject.name);
             [self.collectionView reloadData];
+            
         }
     }];
 
