@@ -140,6 +140,7 @@ static int const NumberOfRequestedObjects = 10;
     
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
+    
     FoursquareObject *currentObject = self.fourSquareObjects[indexPath.row];
     
     cell.nameLabel.text = currentObject.name;
@@ -154,19 +155,14 @@ static int const NumberOfRequestedObjects = 10;
     }
     
     cell.distanceLabel.text = [NSString stringWithFormat:@"%.f minute walk", [self calculateWalkingTime:currentObject]];
-    cell.weatherDescriptionLabel.text = self.currentWeather.detailDescription;
-    
-//    [cell setUpColor];
-    
-    UIColor * randomColor = [cell setUpColor];
-    
-    cell.imageFilterView.backgroundColor = randomColor;
-
-    [cell cutomizeRatingLabel];
+    cell.weatherDescriptionLabel.text = self.currentWeather.detailDescription;    
     
     [cell.backgroundImageView setImageWithURL:currentObject.photoUrl];
     
-    
+    [cell cutomizeRatingLabel];
+
+    cell.imageFilterView.backgroundColor = [ColorLibrary randomColor];
+
     
     return cell;
 }

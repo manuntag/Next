@@ -34,7 +34,10 @@ MKRoute * routeDetails;
    
     self.directionsTextView.text = self.allSteps;
     
+    self.view.layer.cornerRadius = 10;
+    self.view.clipsToBounds = YES;
     
+    self.directionsView.layer.cornerRadius = 10;
     
     
 }

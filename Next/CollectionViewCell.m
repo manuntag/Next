@@ -11,43 +11,11 @@
 
 @implementation CollectionViewCell
 
-
-
-//-(instancetype)init{
-//    
-//    if(self = [super init] ) {
-//        
-//        ColorLibrary * colorLibrary = [[ColorLibrary alloc]init];
-//        
-//        [colorLibrary loadColors];
-//        
-//        UIColor * randomColor = [colorLibrary randomColor];
-//        
-//        self.imageFilterView.backgroundColor = randomColor;
-//
-//    }
-//    
-//    return self;
-//}
-
-
 - (void)cutomizeRatingLabel {
     
     self.ratingLabel.layer.cornerRadius = self.ratingLabel.frame.size.width/2;
     self.ratingLabel.clipsToBounds = YES;
-    
 }
 
- - (UIColor*)setUpColor {
-
-     ColorLibrary * colorLibrary = [[ColorLibrary alloc]init];
-
-     UIColor * randomColor = [colorLibrary randomColor];
-     
-     return randomColor; 
-     
-//    self.imageFilterView.backgroundColor = randomColor;
-     
-}
 
 @end

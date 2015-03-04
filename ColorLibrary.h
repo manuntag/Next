@@ -13,8 +13,8 @@
 @property (nonatomic, strong) NSArray * colorArray;
 
 -(void)loadColors;
--(UIColor*)randomColor;
++(UIColor*)randomColor;
 
--(instancetype)init;
+//-(instancetype)init;
 
 @end

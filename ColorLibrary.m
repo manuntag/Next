@@ -17,17 +17,8 @@
 //green : #00ab84, #137d79, #247e6f, #21797c
 //grey : #485956, #524942
 
--(instancetype)init {
-    
-    if (self = [super init]) {
-        
-        [self loadColors];
-    }
-    return self;
-}
 
-- (void)loadColors {
-    
++ (UIColor*)randomColor {
     
     UIColor * darkBlue1 = [UIColor colorWithHexString:@"#0A4A82" alpha:1.0];
     UIColor * darkBlue2 = [UIColor colorWithHexString:@"#3f526f" alpha:1.0];
@@ -48,17 +39,14 @@
     UIColor * grey1 = [UIColor colorWithHexString:@"#485956" alpha:1.0];
     UIColor * grey2 = [UIColor colorWithHexString:@"#524942" alpha:1.0];
     
-    self.colorArray = [NSArray arrayWithObjects:darkBlue1,darkBlue2,greyBlue1,greyBlue2 , greyBlue3,greyBlue4, greyBlue5, purple1, green1, green2, green3, green4, grey1, grey2,  nil];
+    NSArray *myColorArray = [NSArray arrayWithObjects:darkBlue1,darkBlue2,greyBlue1,greyBlue2 , greyBlue3,greyBlue4, greyBlue5, purple1, green1, green2, green3, green4, grey1, grey2,  nil];
+
     
-}
-- (UIColor*)randomColor {
+    int randomNumber = arc4random()% myColorArray.count;
     
-    int randomNumber = arc4random()%self.colorArray.count;
-    
-    UIColor * randomColorFromColorArray = [self.colorArray objectAtIndex:randomNumber];
+    UIColor * randomColorFromColorArray = [myColorArray objectAtIndex:randomNumber];
     
     return randomColorFromColorArray;
-    
     
 }
 

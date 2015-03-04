@@ -19,11 +19,6 @@
 
 @property (nonatomic,strong) UIColor * randomColor; 
 
-//-(instancetype)init;
-
-- (UIColor*)setUpColor;
-
 - (void)cutomizeRatingLabel;
-// TODO: create custom initializer
 
 @end

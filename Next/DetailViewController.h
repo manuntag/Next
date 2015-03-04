@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "LocationManager.h"
+#import "ColorLibrary.h"
 
 @class FoursquareObject;
 
