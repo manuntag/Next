@@ -26,10 +26,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="448"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xf6-VX-bvb">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xf6-VX-bvb">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="448"/>
                                         </imageView>
-                                        <view alpha="0.79999999999999982" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tcS-hf-ysT">
+                                        <view alpha="0.79999999999999982" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcS-hf-ysT">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="448"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Short Description Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgk-pT-hhm">
@@ -70,6 +70,16 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="xf6-VX-bvb" secondAttribute="trailing" id="O4o-Xp-My4"/>
+                                    <constraint firstItem="tcS-hf-ysT" firstAttribute="leading" secondItem="Mbg-NW-M9k" secondAttribute="leading" id="Tfl-5V-tRv"/>
+                                    <constraint firstAttribute="bottom" secondItem="xf6-VX-bvb" secondAttribute="bottom" id="W5l-S7-EJA"/>
+                                    <constraint firstItem="tcS-hf-ysT" firstAttribute="top" secondItem="Mbg-NW-M9k" secondAttribute="top" id="cML-I7-5ja"/>
+                                    <constraint firstAttribute="trailing" secondItem="tcS-hf-ysT" secondAttribute="trailing" id="gnC-0K-j9U"/>
+                                    <constraint firstAttribute="bottom" secondItem="tcS-hf-ysT" secondAttribute="bottom" id="lyV-dZ-Z7c"/>
+                                    <constraint firstItem="xf6-VX-bvb" firstAttribute="top" secondItem="Mbg-NW-M9k" secondAttribute="top" id="oCq-WN-NCA"/>
+                                    <constraint firstItem="xf6-VX-bvb" firstAttribute="leading" secondItem="Mbg-NW-M9k" secondAttribute="leading" id="ukU-yg-jbP"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="backgroundImageView" destination="xf6-VX-bvb" id="pAW-Q8-zr8"/>
                                     <outlet property="distanceLabel" destination="e5I-co-ZTw" id="u2k-Uy-St4"/>

@@ -6,23 +6,26 @@
 //  Copyright (c) 2015 Jozef Lipovsky. All rights reserved.
 //
 
-#import "CollectionViewController.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "CollectionViewCell.h"
-#import "LocationManager.h"
-#import "WeatherAPIMannager.h"
-#import "Weather.h"
-#import "SugestionCalculator.h"
-#import "Time.h"
+#import "CollectionViewController.h"
+#import "ColorLibrary.h"
+#import "DetailViewController.h"
 #import "FourSquareAPIManager.h"
 #import "FoursquareObject.h"
-#import <AFNetworking/UIImageView+AFNetworking.h>
-#import "DetailViewController.h"
-#import "ColorLibrary.h"
+#import "LocationManager.h"
+#import "SugestionCalculator.h"
+#import "Time.h"
+#import "Weather.h"
+#import "WeatherAPIMannager.h"
 
 
-static int const NumberOfRequestedObjects = 10;
+static NSInteger const NumberOfRequestedObjects = 10;
 
 @interface CollectionViewController ()
+
+@property (nonatomic, strong) NSCache *colorCache;
 
 @property (nonatomic, strong) Weather *currentWeather;
 @property (nonatomic, strong) NSMutableArray *fourSquareObjects;
@@ -33,11 +36,10 @@ static int const NumberOfRequestedObjects = 10;
 @implementation CollectionViewController
 
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.colorCache = [[NSCache alloc] init];
     
     // Data source
     self.fourSquareObjects = [NSMutableArray array];
@@ -51,27 +53,17 @@ static int const NumberOfRequestedObjects = 10;
                                                  name:@"didUpdateLocation"
                                                object:[LocationManager sharedInstance]];
     
-    
-    
 }
 
-
--(void)fetchData
+- (void)fetchData
 {
-    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
-
+    
     [[WeatherAPIMannager sharedInstance] getWheatherDescriptionForLocation:[LocationManager sharedInstance].currentLocation completion:^(Weather *weather) {
-        
         self.currentWeather = weather;
-        NSLog(@"New Weather: %@, description: %@", self.currentWeather.description , self.currentWeather.detailDescription);
-        
-        
-        for (int i = 1; i <= NumberOfRequestedObjects; i++) {
+        for (NSInteger i = 1; i <= NumberOfRequestedObjects; i++) {
             [self generateRandomRecomendation];
         }
-        
     }];
 }
 
@@ -84,44 +76,41 @@ static int const NumberOfRequestedObjects = 10;
     
     [sugestionCalculator calculateReccomendationArray:partOfWeek sectionOfDay:sectionOfDay mainWeather:self.currentWeather.mainDescription];
     NSString *randomReccomendation = [sugestionCalculator randomRecomendedSection];
-    NSLog(@"Calculated randomReccomendation: %@", randomReccomendation);
-    
     [self loadFoursquareObjectForRandomRecomendation:randomReccomendation];
-    
-    
 }
 
 - (void)loadFoursquareObjectForRandomRecomendation:(NSString *)randomReccomendation
 {
-
-    //add foursquare object to data source array
+    // Add Foursquare object to data source array
     [[FourSquareAPIManager sharedInstance] getFoursquareObjectWithLocation:[LocationManager sharedInstance].currentLocation randomReccomendation:randomReccomendation completion:^(FoursquareObject *fourSquareObject) {
-        
-        if ([self isFoursquareobjectUnique:fourSquareObject]) {
+        NSAssert([NSThread isMainThread], @"Not on the main thread");
+        if ([self isFoursquareObjectUnique:fourSquareObject]) {
             [self.fourSquareObjects addObject:fourSquareObject];
-            NSLog(@"Foursquare objetcs array: %@", self.fourSquareObjects);
-            NSLog(@"New foursquare objetc name: %@", fourSquareObject.name);
-            [self.collectionView reloadData];
+            [NSObject cancelPreviousPerformRequestsWithTarget:self];
+            [self performSelector:@selector(reloadData) withObject:nil afterDelay:1];
         }
     }];
+}
 
+- (void)reloadData {
+    [self.collectionView reloadData];
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, @(self.fourSquareObjects.count));
 }
 
 
-
-
-- (BOOL)isFoursquareobjectUnique:(FoursquareObject *)newObject
+- (BOOL)isFoursquareObjectUnique:(FoursquareObject *)newObject
 {
     for (FoursquareObject *object in self.fourSquareObjects) {
         if ([object.name isEqualToString:newObject.name]) {
-            NSLog(@"Duplicate Object");
+            if (self.fourSquareObjects.count < 10) {
+                NSAssert([NSThread isMainThread], @"Not on the main thread");
+                [self generateRandomRecomendation];
+            }
             return NO;
         }
     }
     return YES;
 }
-
-
 
 
 #pragma mark - UICollectionView Data Source
@@ -132,51 +121,91 @@ static int const NumberOfRequestedObjects = 10;
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-
     return self.fourSquareObjects.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    
     
     FoursquareObject *currentObject = self.fourSquareObjects[indexPath.row];
     
     cell.nameLabel.text = currentObject.name;
     cell.shortDescriptionLabel.text = currentObject.shortDescription;
     
-    
     if ([currentObject.rating floatValue]==0.0) {
-     cell.ratingLabel.text = @"N/A";
+        cell.ratingLabel.text = @"N/A";
         
-    }else {
-    cell.ratingLabel.text = [NSString  stringWithFormat:@"%.1f", [currentObject.rating floatValue]];
+    } else {
+        cell.ratingLabel.text = [NSString  stringWithFormat:@"%.1f", [currentObject.rating floatValue]];
     }
     
     cell.distanceLabel.text = [NSString stringWithFormat:@"%.f minute walk", [self calculateWalkingTime:currentObject]];
-    cell.weatherDescriptionLabel.text = self.currentWeather.detailDescription;    
+    cell.weatherDescriptionLabel.text = self.currentWeather.detailDescription;
     
     [cell.backgroundImageView setImageWithURL:currentObject.photoUrl];
+
+//    [cell.backgroundImageView sd_setImageWithURL:currentObject.photoUrl placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        if (error || !image) {
+//            NSLog(@"%@", currentObject.photoUrl);
+//        }
+//    }];
+//
+//    NSURLSession *session = [NSURLSession sharedSession];
+//    NSString *urlString = [currentObject.photoUrl.absoluteString substringWithRange:NSMakeRange(8, currentObject.photoUrl.absoluteString.length - 8)];
+//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", urlString]];
+//    [[session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        if (!error && data) {
+//            UIImage *image = [UIImage imageWithData:data];
+//            if (image) {
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    CollectionViewCell *cell = (CollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+//                    cell.backgroundImageView.image = image;
+//                });
+//            } else {
+//                NSLog(@"%@", currentObject.photoUrl);
+//            }
+//        } else {
+//            NSLog(@"%@", error);
+//        }
+//    }] resume];
     
     [cell cutomizeRatingLabel];
-
-    cell.imageFilterView.backgroundColor = [ColorLibrary randomColor];
-
     
+    UIColor *color = [self.colorCache objectForKey:@(indexPath.item)];
+    if (color) {
+        cell.imageFilterView.backgroundColor = color;
+    } else {
+        color = [ColorLibrary randomColor];
+        cell.imageFilterView.backgroundColor = color;
+        [self.colorCache setObject:color forKey:@(indexPath.item)];
+    }
+
     return cell;
 }
 
+//- (void)downloadImageRepetitively:(UIImageView *)imageView url:(NSURL *)url {
+//    [imageView sd_setImageWithURL:url placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        if (error || !image) {
+//            NSLog(@"%@", url);
+//            [self downloadImageRepetitively:imageView url:url];
+//        }
+//    }];
+//}
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    [self.colorCache removeAllObjects];
+    [self.collectionView reloadData];
+}
 
--(float)calculateWalkingTime:(FoursquareObject*)foursquareObject {
+- (CGFloat)calculateWalkingTime:(FoursquareObject*)foursquareObject {
     
-    float minsAway;
-
+    CGFloat minsAway;
+    
     // "minutes away calculation" : calculation based on average human walking at 50m /min
     
-    float lat = [LocationManager sharedInstance].currentLocation.coordinate.latitude;
-    float lon = [LocationManager sharedInstance].currentLocation.coordinate.longitude;
+    CGFloat lat = [LocationManager sharedInstance].currentLocation.coordinate.latitude;
+    CGFloat lon = [LocationManager sharedInstance].currentLocation.coordinate.longitude;
     
     CLLocation * currentLocationCoordinate = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
     

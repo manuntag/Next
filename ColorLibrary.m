@@ -42,9 +42,9 @@
     NSArray *myColorArray = [NSArray arrayWithObjects:darkBlue1,darkBlue2,greyBlue1,greyBlue2 , greyBlue3,greyBlue4, greyBlue5, purple1, green1, green2, green3, green4, grey1, grey2,  nil];
 
     
-    int randomNumber = arc4random()% myColorArray.count;
-    
-    UIColor * randomColorFromColorArray = [myColorArray objectAtIndex:randomNumber];
+    NSInteger randomNumber = arc4random()% myColorArray.count;
+
+    UIColor *randomColorFromColorArray = [myColorArray objectAtIndex:randomNumber];
     
     return randomColorFromColorArray;
     

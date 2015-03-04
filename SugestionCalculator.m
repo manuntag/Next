@@ -42,11 +42,11 @@
 
 }
 
--(NSString*)randomRecomendedSection {
+-(NSString *)randomRecomendedSection {
 
-    int randomNumber = arc4random()%self.calculatedReccomendationArray.count;
+    NSInteger randomNumber = arc4random() % self.calculatedReccomendationArray.count;
     
-    NSString * randomRecomendation = [self.calculatedReccomendationArray objectAtIndex:randomNumber];
+    NSString *randomRecomendation = [self.calculatedReccomendationArray objectAtIndex:randomNumber];
 
     return randomRecomendation;
 

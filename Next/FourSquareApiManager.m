@@ -14,7 +14,7 @@ static NSString *const FoursquareClientIDString = @"AEMB5NXEBITYUKAGQLROMYCXWN4P
 static NSString *const FoursquareClientSecret = @"T3NGIC1CUHA1ZE4BHWG15R14G4ORYGRGLIMAG2VMFQBNZSZW";
 static NSString *const FoursquareAPIVersion = @"20140806";
 static NSString *const FoursquareRadius = @"100000";
-static NSString *const FoursquareLimit =@"100";
+static NSString *const FoursquareLimit =@"20";
 
 @implementation FourSquareAPIManager
 
@@ -56,7 +56,7 @@ static NSString *const FoursquareLimit =@"100";
     parameters[@"section"]= randomReccomendation;
     parameters[@"openNow"]= @1; //Boolean flag to only include venues that are open now
     parameters[@"venuePhotos"]=@1; //Boolean flag to include a photo in the response for each venue, if one is available.
-
+    
     
     [self GET:@"explore" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         
@@ -69,7 +69,7 @@ static NSString *const FoursquareLimit =@"100";
         NSArray * itemsDataArray = groupsDataDictionary[@"items"];
         
         
-        int randomNumber = arc4random()%[itemsDataArray count];
+        NSInteger randomNumber = arc4random()%[itemsDataArray count];
         NSDictionary *itemDictionary = [itemsDataArray objectAtIndex:randomNumber];
         
         FoursquareObject * fourSquareObject = [[FoursquareObject alloc]initWithDictionary:itemDictionary];

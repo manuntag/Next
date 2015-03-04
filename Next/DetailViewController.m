@@ -54,6 +54,31 @@ MKRoute * routeDetails;
     swipeDownToHideMap.direction=UISwipeGestureRecognizerDirectionDown;
     [self.directionsView addGestureRecognizer:swipeDownToHideMap];
 
+    UISwipeGestureRecognizer * swipeDownToDismissModal = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeDownToDismissModal:)];
+    swipeDownToDismissModal.direction =UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:swipeDownToDismissModal];
+
+    
+}
+
+
+-(void)swipeDownToDismissModal:(UIGestureRecognizer*)gestureRecognizer {
+    
+  [UIView animateWithDuration:1.0 animations:^{
+      
+      self.view.frame = CGRectOffset(self.view.frame, 0, 250);
+      
+  }];
+    
+    
+    [self performSelector:@selector(dismissModalView) withObject:self afterDelay:1.0];
+    
+}
+
+-(void)dismissModalView {
+    
+  [self dismissViewControllerAnimated:YES completion:nil];
+    
     
 }
 
@@ -146,7 +171,7 @@ MKRoute * routeDetails;
             NSLog(@"\n%f", routeDetails.distance);
             
             self.allSteps = @"";
-            for (int i = 0; i < routeDetails.steps.count; i++) {
+            for (NSInteger i = 0; i < routeDetails.steps.count; i++) {
                 MKRouteStep *step = [routeDetails.steps objectAtIndex:i];
                 NSString *newStep = step.instructions;
                 self.allSteps = [self.allSteps stringByAppendingString:newStep];

@@ -11,6 +11,15 @@
 
 @implementation CollectionViewCell
 
+//- (void)prepareForReuse {
+//    
+//    [super prepareForReuse];
+//    
+//    self.backgroundImageView.image = nil;
+//    
+//    
+//}
+
 - (void)cutomizeRatingLabel {
     
     self.ratingLabel.layer.cornerRadius = self.ratingLabel.frame.size.width/2;
