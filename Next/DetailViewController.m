@@ -30,8 +30,62 @@ MKRoute * routeDetails;
     
     [self addDirectionsToFourSquareObject];
     
+    [self setUpGestureRecognizers];
+   
+    self.directionsTextView.text = self.allSteps;
+    
+    
+    
+    
 }
 
+
+-(void)setUpGestureRecognizers {
+    
+    UISwipeGestureRecognizer * swipeUpToRevealMap = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(slideUpToRevealMap:)];
+    swipeUpToRevealMap.direction =UISwipeGestureRecognizerDirectionUp;
+    [self.directionsView addGestureRecognizer:swipeUpToRevealMap];
+    
+    
+    UISwipeGestureRecognizer *swipeDownToHideMap = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeDownToHideMapAction:)];
+    swipeDownToHideMap.direction=UISwipeGestureRecognizerDirectionDown;
+    [self.directionsView addGestureRecognizer:swipeDownToHideMap];
+
+    
+}
+
+
+-(void)swipeDownToHideMapAction:(UIGestureRecognizer*)gestureRecognizer {
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        
+        if (self.directionsView.frame.origin.y<=520) {
+            
+             self.directionsView.frame = CGRectOffset(self.directionsView.frame, 0, 200);
+
+        }
+        
+        
+    }];
+}
+
+
+-(void)slideUpToRevealMap:(UIGestureRecognizer*)gestureRecognizer {
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        
+        self.directionsTextView.text = self.allSteps;
+        
+        if (self.directionsView.frame.origin.y>=415) {
+        
+            self.directionsView.frame = CGRectOffset(self.directionsView.frame, 0, -200);
+            
+        }
+        
+    }];
+    
+
+}
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     
@@ -59,9 +113,7 @@ MKRoute * routeDetails;
 
     }
 
-    
 }
-
 
 
 -(void)addDirectionsToFourSquareObject {
@@ -125,24 +177,6 @@ MKRoute * routeDetails;
     }
 }
 
-
-- (IBAction)dismissDirectionsButton:(id)sender {
-
-    self.directionsView.alpha = 0.0;
-
-
-}
-
-
-
-- (IBAction)directionsButton:(id)sender {
-    
-    self.directionsTextView.text = self.allSteps;
-
-    self.directionsView.alpha = 1.0;
-    
-    
-}
 
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay

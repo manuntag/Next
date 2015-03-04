@@ -38,15 +38,15 @@
     
 }
 
- - (void)setUpColor {
+ - (UIColor*)setUpColor {
 
      ColorLibrary * colorLibrary = [[ColorLibrary alloc]init];
 
-             [colorLibrary loadColors];
+     UIColor * randomColor = [colorLibrary randomColor];
      
-             UIColor * randomColor = [colorLibrary randomColor];
+     return randomColor; 
      
-             self.imageFilterView.backgroundColor = randomColor;
+//    self.imageFilterView.backgroundColor = randomColor;
      
 }
 

@@ -15,4 +15,6 @@
 -(void)loadColors;
 -(UIColor*)randomColor;
 
+-(instancetype)init;
+
 @end

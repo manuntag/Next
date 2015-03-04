@@ -17,6 +17,14 @@
 //green : #00ab84, #137d79, #247e6f, #21797c
 //grey : #485956, #524942
 
+-(instancetype)init {
+    
+    if (self = [super init]) {
+        
+        [self loadColors];
+    }
+    return self;
+}
 
 - (void)loadColors {
     
@@ -53,7 +61,6 @@
     
     
 }
-
 
 
 @end
