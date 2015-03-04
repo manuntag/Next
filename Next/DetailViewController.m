@@ -38,6 +38,7 @@ MKRoute * routeDetails;
     self.view.clipsToBounds = YES;
     
     self.directionsView.layer.cornerRadius = 10;
+   
     
     
 }
@@ -57,7 +58,27 @@ MKRoute * routeDetails;
     UISwipeGestureRecognizer * swipeDownToDismissModal = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeDownToDismissModal:)];
     swipeDownToDismissModal.direction =UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:swipeDownToDismissModal];
+    
+    UISwipeGestureRecognizer * swipeRightToPhone = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(phoneContact:)];
+    swipeRightToPhone.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.contactView addGestureRecognizer:swipeRightToPhone];
+    
+    
+    
+    
+    
+}
 
+
+
+-(void)phoneContact:(UIGestureRecognizer*)gestureRecognizer {
+    
+    
+//    NSString * phoneNumber =  self.detailFoursquareObject.phoneNumber;
+    
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"tel:7787897171"]];
+    
+    
     
 }
 

@@ -29,6 +29,7 @@
 
 @property (strong, nonatomic) IBOutlet UITextView *directionsTextView;
 
+@property (strong, nonatomic) IBOutlet UIView *contactView;
 
 
 @property (nonatomic, strong) NSString *allSteps;
