@@ -37,8 +37,6 @@ static NSInteger const NumberOfRequestedObjects = 10;
 
 @implementation CollectionViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
    
@@ -61,15 +59,10 @@ static NSInteger const NumberOfRequestedObjects = 10;
     
     [self loadSplashScreen];
     
-    
-
 }
 
 
 -(void)loadSplashScreen {
-    
-    
-    
     
     UIView * splashView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height+30)];
     
@@ -94,32 +87,21 @@ static NSInteger const NumberOfRequestedObjects = 10;
     [UIView animateWithDuration:3.0 animations:^{
     
         nextLabel.alpha = 1;
-        
-        
+    
     }];
     
     [self.view addSubview:splashView];
     
-    
     [UIView animateWithDuration:3 delay:6 options:UIViewAnimationOptionTransitionNone animations:^{
-
         
      splashView.alpha =0;
-
     
     } completion:^(BOOL finished){
         
         [[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
         
     } ];
-    
-   
-    
-    
 }
-
-
-
 
 - (void)fetchData
 {
@@ -210,31 +192,6 @@ static NSInteger const NumberOfRequestedObjects = 10;
     
     [cell.backgroundImageView setImageWithURL:currentObject.photoUrl];
 
-//    [cell.backgroundImageView sd_setImageWithURL:currentObject.photoUrl placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//        if (error || !image) {
-//            NSLog(@"%@", currentObject.photoUrl);
-//        }
-//    }];
-//
-//    NSURLSession *session = [NSURLSession sharedSession];
-//    NSString *urlString = [currentObject.photoUrl.absoluteString substringWithRange:NSMakeRange(8, currentObject.photoUrl.absoluteString.length - 8)];
-//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", urlString]];
-//    [[session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//        if (!error && data) {
-//            UIImage *image = [UIImage imageWithData:data];
-//            if (image) {
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    CollectionViewCell *cell = (CollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-//                    cell.backgroundImageView.image = image;
-//                });
-//            } else {
-//                NSLog(@"%@", currentObject.photoUrl);
-//            }
-//        } else {
-//            NSLog(@"%@", error);
-//        }
-//    }] resume];
-    
     [cell cutomizeRatingLabel];
     
     UIColor *color = [self.colorCache objectForKey:@(indexPath.item)];
@@ -248,15 +205,6 @@ static NSInteger const NumberOfRequestedObjects = 10;
 
     return cell;
 }
-
-//- (void)downloadImageRepetitively:(UIImageView *)imageView url:(NSURL *)url {
-//    [imageView sd_setImageWithURL:url placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//        if (error || !image) {
-//            NSLog(@"%@", url);
-//            [self downloadImageRepetitively:imageView url:url];
-//        }
-//    }];
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

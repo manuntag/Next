@@ -76,7 +76,6 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     self.currentLocation = [locations lastObject];
-    NSLog(@"lat: %f, long: %f", self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude);
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didUpdateLocation" object:self];
     

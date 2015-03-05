@@ -39,8 +39,6 @@ MKRoute * routeDetails;
     
     self.directionsView.layer.cornerRadius = 10;
    
-    
-    
 }
 
 
@@ -63,11 +61,7 @@ MKRoute * routeDetails;
     swipeRightToPhone.direction = UISwipeGestureRecognizerDirectionRight;
     [self.contactView addGestureRecognizer:swipeRightToPhone];
     
-    
-
-    
 }
-
 
 
 -(void)phoneContact:(UIGestureRecognizer*)gestureRecognizer {
@@ -76,8 +70,6 @@ MKRoute * routeDetails;
     NSString * phoneNumber =  self.detailFoursquareObject.phoneNumber;
     
     [[UIApplication sharedApplication]openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", phoneNumber]]];
-    
-    
     
 }
 
@@ -90,15 +82,12 @@ MKRoute * routeDetails;
       
   }];
     
-    
     [self performSelector:@selector(dismissModalView) withObject:self afterDelay:1.0];
-    
 }
 
 -(void)dismissModalView {
     
   [self dismissViewControllerAnimated:YES completion:nil];
-    
     
 }
 
@@ -110,13 +99,10 @@ MKRoute * routeDetails;
         if (self.directionsView.frame.origin.y<=520) {
             
              self.directionsView.frame = CGRectOffset(self.directionsView.frame, 0, 200);
-
         }
-        
         
     }];
 }
-
 
 -(void)slideUpToRevealMap:(UIGestureRecognizer*)gestureRecognizer {
     
@@ -132,7 +118,6 @@ MKRoute * routeDetails;
         
     }];
     
-
 }
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
@@ -158,11 +143,8 @@ MKRoute * routeDetails;
         
         [self.fourSquareObjectMapView addAnnotation:marker];
     
-
     }
-
 }
-
 
 -(void)addDirectionsToFourSquareObject {
     
@@ -188,7 +170,6 @@ MKRoute * routeDetails;
             
             routeDetails = response.routes.lastObject;
             [self.fourSquareObjectMapView addOverlay:routeDetails.polyline];
-            NSLog(@"\n%f", routeDetails.distance);
             
             self.allSteps = @"";
             for (NSInteger i = 0; i < routeDetails.steps.count; i++) {
@@ -196,8 +177,6 @@ MKRoute * routeDetails;
                 NSString *newStep = step.instructions;
                 self.allSteps = [self.allSteps stringByAppendingString:newStep];
                 self.allSteps = [self.allSteps stringByAppendingString:@"\n\n"];
-                
-                NSLog(@"\n\n%@", self.allSteps);
                 
             }
             

@@ -23,8 +23,7 @@
     [dateFormatter setDateFormat:@"EEEE"];
     
     NSString * dayString = [dateFormatter stringFromDate:day];
-    
-    NSLog(@"%@", dayString);
+
     
     if ([dayString isEqualToString:@"Friday"]||[dayString isEqualToString:@"Saturday"]||[dayString  isEqualToString:@"Sunday"]) {
         

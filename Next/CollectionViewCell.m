@@ -11,15 +11,6 @@
 
 @implementation CollectionViewCell
 
-//- (void)prepareForReuse {
-//    
-//    [super prepareForReuse];
-//    
-//    [self reloadInputViews];
-//    
-//    
-//}
-
 - (void)cutomizeRatingLabel {
     
     self.ratingLabel.layer.cornerRadius = self.ratingLabel.frame.size.width/2;
