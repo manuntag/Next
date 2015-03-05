@@ -16,6 +16,7 @@
 		8A25F3F51A9D240400123BCF /* Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A25F3F41A9D240400123BCF /* Time.m */; };
 		E009EDD11A9E8D3D00C0FB18 /* WeatherAPIMannager.m in Sources */ = {isa = PBXBuildFile; fileRef = E009EDD01A9E8D3D00C0FB18 /* WeatherAPIMannager.m */; };
 		E009EDD41A9ECFBE00C0FB18 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = E009EDD31A9ECFBE00C0FB18 /* Weather.m */; };
+		E017F0271AA801C5005C0EF3 /* CustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E017F0261AA801C5005C0EF3 /* CustomFlowLayout.m */; };
 		E07696451AA3EECE004E4485 /* FourSquareAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E07696441AA3EECE004E4485 /* FourSquareAPIManager.m */; };
 		E08DB40B1AA3F27F00232C3F /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B465871AA29EBA00F8554B /* CollectionViewCell.m */; };
 		E0B42DD81A9D0CA500413524 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B42DD71A9D0CA500413524 /* main.m */; };
@@ -59,6 +60,8 @@
 		E009EDD01A9E8D3D00C0FB18 /* WeatherAPIMannager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherAPIMannager.m; sourceTree = "<group>"; };
 		E009EDD21A9ECFBE00C0FB18 /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
 		E009EDD31A9ECFBE00C0FB18 /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
+		E017F0251AA801C5005C0EF3 /* CustomFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFlowLayout.h; sourceTree = "<group>"; };
+		E017F0261AA801C5005C0EF3 /* CustomFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFlowLayout.m; sourceTree = "<group>"; };
 		E07696431AA3EECE004E4485 /* FourSquareAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourSquareAPIManager.h; sourceTree = "<group>"; };
 		E07696441AA3EECE004E4485 /* FourSquareAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourSquareAPIManager.m; sourceTree = "<group>"; };
 		E0B42DD21A9D0CA500413524 /* Next.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Next.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +127,8 @@
 				E0E1FD561A9D2891004749AF /* LocationManager.m */,
 				E07696431AA3EECE004E4485 /* FourSquareAPIManager.h */,
 				E07696441AA3EECE004E4485 /* FourSquareAPIManager.m */,
+				E017F0251AA801C5005C0EF3 /* CustomFlowLayout.h */,
+				E017F0261AA801C5005C0EF3 /* CustomFlowLayout.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 				8A007B481A9ECEA90050CAC1 /* SugestionCalculator.m in Sources */,
 				8A0891EE1AA40C8600CE27E7 /* ColorLibrary.m in Sources */,
 				E0B465851AA29C5F00F8554B /* CollectionViewController.m in Sources */,
+				E017F0271AA801C5005C0EF3 /* CustomFlowLayout.m in Sources */,
 				E0B42DDB1A9D0CA500413524 /* AppDelegate.m in Sources */,
 				E0B4658B1AA2BB2C00F8554B /* DetailViewController.m in Sources */,
 				E0B42DD81A9D0CA500413524 /* main.m in Sources */,

@@ -18,9 +18,10 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "DetailViewController.h"
 #import "ColorLibrary.h"
+#import "CustomFlowLayout.h"
 
 
-static int const NumberOfRequestedObjects = 2;
+static int const NumberOfRequestedObjects = 5;
 
 @interface CollectionViewController ()
 
@@ -59,7 +60,16 @@ static int const NumberOfRequestedObjects = 2;
     UISwipeGestureRecognizer *swipeToDelete = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeToDelete)];
     swipeToDelete.direction =UISwipeGestureRecognizerDirectionUp;
     [self.collectionView addGestureRecognizer:swipeToDelete];
-
+    
+    
+    CustomFlowLayout *flowLayout = (CustomFlowLayout *)self.collectionView.collectionViewLayout;
+    
+    flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    flowLayout.itemSize = CGSizeMake(320, 448);
+    flowLayout.minimumInteritemSpacing = 0;
+    flowLayout.minimumLineSpacing = 0;
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    
 
     
 }
@@ -73,7 +83,9 @@ static int const NumberOfRequestedObjects = 2;
     [self performSelector:@selector(deleteFoursquareObject) withObject:self afterDelay:1.0];
     
 
-    [self generateRandomRecomendation];
+    
+    
+    
 }
 
 
@@ -82,20 +94,23 @@ static int const NumberOfRequestedObjects = 2;
     NSIndexPath *indexPath = [visibleItem firstObject];
     
     NSInteger row = [indexPath row];
+    
     [self.dataSource removeObjectAtIndex:row];
     
     NSArray *objectToDelete = @[indexPath];
     [self.collectionView deleteItemsAtIndexPaths:objectToDelete];
-   
-
+    
+    [self generateRandomRecomendation];
 }
+
+
+
+
 
 
 -(void)fetchData
 {
-    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
 
     [[WeatherAPIMannager sharedInstance] getWheatherDescriptionForLocation:[LocationManager sharedInstance].currentLocation completion:^(Weather *weather) {
         
@@ -106,7 +121,6 @@ static int const NumberOfRequestedObjects = 2;
         for (int i = 1; i <= NumberOfRequestedObjects; i++) {
             [self generateRandomRecomendation];
         }
-        
     }];
 }
 
@@ -137,6 +151,7 @@ static int const NumberOfRequestedObjects = 2;
             [self.allFoursquareObjects addObject:fourSquareObject];
             NSLog(@"Foursquare objetcs array: %@", self.dataSource);
             NSLog(@"New foursquare objetc name: %@", fourSquareObject.name);
+
             [self.collectionView reloadData];
             
         }
@@ -205,6 +220,9 @@ static int const NumberOfRequestedObjects = 2;
     [cell cutomizeRatingLabel];
     
     [cell.backgroundImageView setImageWithURL:currentObject.photoUrl];
+    
+    
+    
     
     return cell;
 }
