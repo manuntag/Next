@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *weatherDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (strong, nonatomic) IBOutlet UIView *imageFilterView;
+@property (strong, nonatomic) IBOutlet UIView *loadingView;
+
 
 @property (nonatomic,strong) UIColor * randomColor; 
 

@@ -15,7 +15,7 @@
 //    
 //    [super prepareForReuse];
 //    
-//    self.backgroundImageView.image = nil;
+//    [self reloadInputViews];
 //    
 //    
 //}

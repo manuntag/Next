@@ -64,8 +64,7 @@ MKRoute * routeDetails;
     [self.contactView addGestureRecognizer:swipeRightToPhone];
     
     
-    
-    
+
     
 }
 
@@ -74,9 +73,9 @@ MKRoute * routeDetails;
 -(void)phoneContact:(UIGestureRecognizer*)gestureRecognizer {
     
     
-//    NSString * phoneNumber =  self.detailFoursquareObject.phoneNumber;
+    NSString * phoneNumber =  self.detailFoursquareObject.phoneNumber;
     
-    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"tel:7787897171"]];
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", phoneNumber]]];
     
     
     

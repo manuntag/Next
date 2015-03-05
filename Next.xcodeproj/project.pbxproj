@@ -14,6 +14,7 @@
 		8A0891EE1AA40C8600CE27E7 /* ColorLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0891ED1AA40C8600CE27E7 /* ColorLibrary.m */; };
 		8A0891F01AA4F72A00CE27E7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0891EF1AA4F72A00CE27E7 /* MapKit.framework */; };
 		8A25F3F51A9D240400123BCF /* Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A25F3F41A9D240400123BCF /* Time.m */; };
+		8A9D6BF21AA7E1D500C506B4 /* CircleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D6BF11AA7E1D500C506B4 /* CircleAnimation.m */; };
 		E009EDD11A9E8D3D00C0FB18 /* WeatherAPIMannager.m in Sources */ = {isa = PBXBuildFile; fileRef = E009EDD01A9E8D3D00C0FB18 /* WeatherAPIMannager.m */; };
 		E009EDD41A9ECFBE00C0FB18 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = E009EDD31A9ECFBE00C0FB18 /* Weather.m */; };
 		E07696451AA3EECE004E4485 /* FourSquareAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E07696441AA3EECE004E4485 /* FourSquareAPIManager.m */; };
@@ -55,6 +56,8 @@
 		8A0891EF1AA4F72A00CE27E7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8A25F3F31A9D240400123BCF /* Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Time.h; path = ../Time.h; sourceTree = "<group>"; };
 		8A25F3F41A9D240400123BCF /* Time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Time.m; path = ../Time.m; sourceTree = "<group>"; };
+		8A9D6BF01AA7E1D500C506B4 /* CircleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleAnimation.h; path = ../CircleAnimation.h; sourceTree = "<group>"; };
+		8A9D6BF11AA7E1D500C506B4 /* CircleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleAnimation.m; path = ../CircleAnimation.m; sourceTree = "<group>"; };
 		E009EDCF1A9E8D3D00C0FB18 /* WeatherAPIMannager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherAPIMannager.h; sourceTree = "<group>"; };
 		E009EDD01A9E8D3D00C0FB18 /* WeatherAPIMannager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherAPIMannager.m; sourceTree = "<group>"; };
 		E009EDD21A9ECFBE00C0FB18 /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 		8A007B491A9ECEB40050CAC1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8A9D6BF01AA7E1D500C506B4 /* CircleAnimation.h */,
+				8A9D6BF11AA7E1D500C506B4 /* CircleAnimation.m */,
 				8A007B461A9ECEA90050CAC1 /* SugestionCalculator.h */,
 				8A007B471A9ECEA90050CAC1 /* SugestionCalculator.m */,
 				E009EDCF1A9E8D3D00C0FB18 /* WeatherAPIMannager.h */,
@@ -372,6 +377,7 @@
 				8A007B541AA0151B0050CAC1 /* FoursquareObject.m in Sources */,
 				E009EDD11A9E8D3D00C0FB18 /* WeatherAPIMannager.m in Sources */,
 				8A007B481A9ECEA90050CAC1 /* SugestionCalculator.m in Sources */,
+				8A9D6BF21AA7E1D500C506B4 /* CircleAnimation.m in Sources */,
 				8A0891EE1AA40C8600CE27E7 /* ColorLibrary.m in Sources */,
 				E0B465851AA29C5F00F8554B /* CollectionViewController.m in Sources */,
 				E0B42DDB1A9D0CA500413524 /* AppDelegate.m in Sources */,

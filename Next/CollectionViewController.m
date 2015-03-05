@@ -19,6 +19,8 @@
 #import "Time.h"
 #import "Weather.h"
 #import "WeatherAPIMannager.h"
+#import "CircleAnimation.h"
+
 
 
 static NSInteger const NumberOfRequestedObjects = 10;
@@ -36,8 +38,10 @@ static NSInteger const NumberOfRequestedObjects = 10;
 @implementation CollectionViewController
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
     
     self.colorCache = [[NSCache alloc] init];
     
@@ -53,7 +57,69 @@ static NSInteger const NumberOfRequestedObjects = 10;
                                                  name:@"didUpdateLocation"
                                                object:[LocationManager sharedInstance]];
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    [self loadSplashScreen];
+    
+    
+
 }
+
+
+-(void)loadSplashScreen {
+    
+    
+    
+    
+    UIView * splashView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height+30)];
+    
+    splashView.backgroundColor = [UIColor whiteColor];
+    UIView * circle = [CircleAnimation makeCircleWithCentreX:self.view.bounds.size.width/2 centreY:self.view.bounds.size.height/2];
+    
+    [splashView addSubview:circle];
+    
+    UILabel * nextLabel = [[UILabel alloc]initWithFrame:self.view.bounds];
+    nextLabel.textColor = [UIColor whiteColor];
+    nextLabel.textAlignment = NSTextAlignmentCenter;
+    nextLabel.text = @"Next";
+    nextLabel.alpha = 0.0;
+    
+    UIFont * nextFont = [UIFont fontWithName:@"AvenirNext-UltraLight" size:75];
+    
+    [nextLabel setFont:nextFont];
+    
+    [splashView addSubview:nextLabel];
+    
+
+    [UIView animateWithDuration:3.0 animations:^{
+    
+        nextLabel.alpha = 1;
+        
+        
+    }];
+    
+    [self.view addSubview:splashView];
+    
+    
+    [UIView animateWithDuration:3 delay:6 options:UIViewAnimationOptionTransitionNone animations:^{
+
+        
+     splashView.alpha =0;
+
+    
+    } completion:^(BOOL finished){
+        
+        [[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+        
+    } ];
+    
+   
+    
+    
+}
+
+
+
 
 - (void)fetchData
 {
@@ -198,6 +264,8 @@ static NSInteger const NumberOfRequestedObjects = 10;
     [self.collectionView reloadData];
 }
 
+
+
 - (CGFloat)calculateWalkingTime:(FoursquareObject*)foursquareObject {
     
     CGFloat minsAway;
@@ -216,7 +284,6 @@ static NSInteger const NumberOfRequestedObjects = 10;
     return minsAway = dist/50;
     
 }
-
 
 
 #pragma mark - Segue

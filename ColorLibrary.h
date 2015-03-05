@@ -12,7 +12,6 @@
 @interface ColorLibrary : NSObject
 @property (nonatomic, strong) NSArray * colorArray;
 
--(void)loadColors;
 +(UIColor*)randomColor;
 
 //-(instancetype)init;
