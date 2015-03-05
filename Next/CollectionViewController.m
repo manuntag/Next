@@ -20,12 +20,12 @@
 #import "ColorLibrary.h"
 
 
-static int const NumberOfRequestedObjects = 20;
+static int const NumberOfRequestedObjects = 3;
 
 @interface CollectionViewController ()
 
 @property (nonatomic, strong) Weather *currentWeather;
-@property (nonatomic, strong) NSMutableArray *fourSquareObjects;
+@property (nonatomic, strong) NSMutableArray *dataSource;
 
 
 @end
@@ -40,7 +40,7 @@ static int const NumberOfRequestedObjects = 20;
     
     
     // Data source
-    self.fourSquareObjects = [NSMutableArray array];
+    self.dataSource = [NSMutableArray array];
     
     [[LocationManager sharedInstance] startUpdatingLocation];
     
@@ -50,6 +50,44 @@ static int const NumberOfRequestedObjects = 20;
                                              selector:@selector(fetchData)
                                                  name:@"didUpdateLocation"
                                                object:[LocationManager sharedInstance]];
+    
+
+    
+    
+    UISwipeGestureRecognizer *swipeToDelete = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeToDelete)];
+    swipeToDelete.direction =UISwipeGestureRecognizerDirectionUp;
+    [self.collectionView addGestureRecognizer:swipeToDelete];
+
+
+    
+}
+
+
+
+
+- (void)handleSwipeToDelete {
+
+    //
+    [self performSelector:@selector(deleteFoursquareObject) withObject:self afterDelay:1.0];
+    
+
+    [self generateRandomRecomendation];
+}
+
+
+- (void)deleteFoursquareObject {
+    NSArray *visibleItem = [self.collectionView indexPathsForVisibleItems];
+    NSIndexPath *indexPath = [visibleItem firstObject];
+    
+    NSInteger row = [indexPath row];
+    [self.dataSource removeObjectAtIndex:row];
+    
+    NSArray *objectsToDelete = @[indexPath];
+    [self.collectionView deleteItemsAtIndexPaths:objectsToDelete];
+    
+    
+    
+
 }
 
 
@@ -95,8 +133,8 @@ static int const NumberOfRequestedObjects = 20;
     [[FourSquareAPIManager sharedInstance] getFoursquareObjectWithLocation:[LocationManager sharedInstance].currentLocation randomReccomendation:randomReccomendation completion:^(FoursquareObject *fourSquareObject) {
         
         if ([self isFoursquareobjectUnique:fourSquareObject]) {
-            [self.fourSquareObjects addObject:fourSquareObject];
-            NSLog(@"Foursquare objetcs array: %@", self.fourSquareObjects);
+            [self.dataSource addObject:fourSquareObject];
+            NSLog(@"Foursquare objetcs array: %@", self.dataSource);
             NSLog(@"New foursquare objetc name: %@", fourSquareObject.name);
             [self.collectionView reloadData];
             
@@ -110,7 +148,7 @@ static int const NumberOfRequestedObjects = 20;
 
 - (BOOL)isFoursquareobjectUnique:(FoursquareObject *)newObject
 {
-    for (FoursquareObject *object in self.fourSquareObjects) {
+    for (FoursquareObject *object in self.dataSource) {
         if ([object.name isEqualToString:newObject.name]) {
             NSLog(@"Duplicate Object");
             return NO;
@@ -131,7 +169,7 @@ static int const NumberOfRequestedObjects = 20;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    return self.fourSquareObjects.count;
+    return self.dataSource.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -141,7 +179,7 @@ static int const NumberOfRequestedObjects = 20;
     
 
     
-    FoursquareObject *currentObject = self.fourSquareObjects[indexPath.row];
+    FoursquareObject *currentObject = self.dataSource[indexPath.row];
     
     cell.nameLabel.text = currentObject.name;
     cell.shortDescriptionLabel.text = currentObject.shortDescription;
@@ -194,7 +232,7 @@ static int const NumberOfRequestedObjects = 20;
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
-        FoursquareObject *detailFoursquareObject = self.fourSquareObjects[indexPath.row];
+        FoursquareObject *detailFoursquareObject = self.dataSource[indexPath.row];
         [[segue destinationViewController] setDetailFoursquareObject:detailFoursquareObject];
     }
 }
