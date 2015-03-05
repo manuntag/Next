@@ -29,7 +29,8 @@ static NSInteger const NumberOfRequestedObjects = 10;
 @property (nonatomic, strong) NSCache *colorCache;
 
 @property (nonatomic, strong) Weather *currentWeather;
-@property (nonatomic, strong) NSMutableArray *fourSquareObjects;
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSMutableArray *allFoursquareObjects; // for duplicity check
 
 
 @end
@@ -42,10 +43,8 @@ static NSInteger const NumberOfRequestedObjects = 10;
     
     self.colorCache = [[NSCache alloc] init];
     
-    // Data source
-    self.fourSquareObjects = [NSMutableArray array];
     
-    [[LocationManager sharedInstance] startUpdatingLocation];
+    //[[LocationManager sharedInstance] startUpdatingLocation];
     
     
     // check if we are getting location, so we can fetch weather and foursquare objects
@@ -147,7 +146,7 @@ static NSInteger const NumberOfRequestedObjects = 10;
 
 - (BOOL)isFoursquareObjectUnique:(FoursquareObject *)newObject
 {
-    for (FoursquareObject *object in self.fourSquareObjects) {
+    for (FoursquareObject *object in self.allFoursquareObjects) {
         if ([object.name isEqualToString:newObject.name]) {
             if (self.fourSquareObjects.count < 10) {
                 NSAssert([NSThread isMainThread], @"Not on the main thread");
@@ -228,6 +227,7 @@ static NSInteger const NumberOfRequestedObjects = 10;
     
     CLLocationDistance dist = [foursquareObjectLocation distanceFromLocation:currentLocationCoordinate];
     
+    // "minutes away calculation" : calculation based on average human walking at 50m /min
     return minsAway = dist/50;
     
 }
@@ -239,7 +239,7 @@ static NSInteger const NumberOfRequestedObjects = 10;
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
-        FoursquareObject *detailFoursquareObject = self.fourSquareObjects[indexPath.row];
+        FoursquareObject *detailFoursquareObject = self.dataSource[indexPath.row];
         [[segue destinationViewController] setDetailFoursquareObject:detailFoursquareObject];
     }
 }
