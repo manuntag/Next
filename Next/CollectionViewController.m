@@ -20,12 +20,13 @@
 #import "ColorLibrary.h"
 
 
-static int const NumberOfRequestedObjects = 3;
+static int const NumberOfRequestedObjects = 2;
 
 @interface CollectionViewController ()
 
 @property (nonatomic, strong) Weather *currentWeather;
 @property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSMutableArray *allFoursquareObjects; // for duplicity check
 
 
 @end
@@ -38,11 +39,12 @@ static int const NumberOfRequestedObjects = 3;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    // Data source
+
     self.dataSource = [NSMutableArray array];
+    self.allFoursquareObjects = [NSMutableArray array];
     
-    [[LocationManager sharedInstance] startUpdatingLocation];
+    
+    //[[LocationManager sharedInstance] startUpdatingLocation];
     
     
     // check if we are getting location, so we can fetch weather and foursquare objects
@@ -67,7 +69,7 @@ static int const NumberOfRequestedObjects = 3;
 
 - (void)handleSwipeToDelete {
 
-    //
+    // delay collectionview default animation
     [self performSelector:@selector(deleteFoursquareObject) withObject:self afterDelay:1.0];
     
 
@@ -82,11 +84,9 @@ static int const NumberOfRequestedObjects = 3;
     NSInteger row = [indexPath row];
     [self.dataSource removeObjectAtIndex:row];
     
-    NSArray *objectsToDelete = @[indexPath];
-    [self.collectionView deleteItemsAtIndexPaths:objectsToDelete];
-    
-    
-    
+    NSArray *objectToDelete = @[indexPath];
+    [self.collectionView deleteItemsAtIndexPaths:objectToDelete];
+   
 
 }
 
@@ -134,6 +134,7 @@ static int const NumberOfRequestedObjects = 3;
         
         if ([self isFoursquareobjectUnique:fourSquareObject]) {
             [self.dataSource addObject:fourSquareObject];
+            [self.allFoursquareObjects addObject:fourSquareObject];
             NSLog(@"Foursquare objetcs array: %@", self.dataSource);
             NSLog(@"New foursquare objetc name: %@", fourSquareObject.name);
             [self.collectionView reloadData];
@@ -148,8 +149,13 @@ static int const NumberOfRequestedObjects = 3;
 
 - (BOOL)isFoursquareobjectUnique:(FoursquareObject *)newObject
 {
-    for (FoursquareObject *object in self.dataSource) {
+    for (FoursquareObject *object in self.allFoursquareObjects) {
         if ([object.name isEqualToString:newObject.name]) {
+            
+            if (self.dataSource.count < NumberOfRequestedObjects) {
+                [self generateRandomRecomendation];
+            }
+            
             NSLog(@"Duplicate Object");
             return NO;
         }
@@ -208,8 +214,6 @@ static int const NumberOfRequestedObjects = 3;
 -(float)calculateWalkingTime:(FoursquareObject*)foursquareObject {
     
     float minsAway;
-
-    // "minutes away calculation" : calculation based on average human walking at 50m /min
     
     float lat = [LocationManager sharedInstance].currentLocation.coordinate.latitude;
     float lon = [LocationManager sharedInstance].currentLocation.coordinate.longitude;
@@ -220,6 +224,7 @@ static int const NumberOfRequestedObjects = 3;
     
     CLLocationDistance dist = [foursquareObjectLocation distanceFromLocation:currentLocationCoordinate];
     
+    // "minutes away calculation" : calculation based on average human walking at 50m /min
     return minsAway = dist/50;
     
 }

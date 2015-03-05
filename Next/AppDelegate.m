@@ -21,7 +21,7 @@
     // Override point for customization after application launch.
     
     
-    //[[LocationManager sharedInstance] startUpdatingLocation];
+    [[LocationManager sharedInstance] startUpdatingLocation];
     
     return YES;
 }
