@@ -19,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
+    [[LocationManager sharedInstance] startUpdatingLocation];
     NSLog(@"in didFinishLaunchingWithOptions");
     
     return YES;
