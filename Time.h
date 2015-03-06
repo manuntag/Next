@@ -10,9 +10,8 @@
 
 @interface Time : NSObject
 
-+(NSString*)partOfWeek;
-
-+(NSString*)sectionOfDay;
++ (NSString *)partOfWeek;
++ (NSString *)sectionOfDay;
 
 
 @end

@@ -15,12 +15,12 @@
 
 //y568 x320
 
-+(UIView*)makeCircleWithCentreX:(CGFloat)centreX centreY:(CGFloat)centreY {
++ (UIView *)makeCircleWithCentreX:(CGFloat)centreX centreY:(CGFloat)centreY {
   
     
-    CGRect circleDimension = CGRectMake(centreX-5, centreY-5, 10 ,10);
+    CGRect circleDimension = CGRectMake(centreX - 5, centreY - 5, 10 ,10);
     
-    UIView * circle = [[UIView alloc]initWithFrame:circleDimension];
+    UIView *circle = [[UIView alloc]initWithFrame:circleDimension];
     
     circle.backgroundColor = [UIColor colorWithHexString:@"#68c4af"];
     circle.alpha = 0.50;
@@ -32,21 +32,16 @@
 
     [UIView animateWithDuration:5.0 animations:^{
         
-        CGRect newCircleDimension = CGRectMake(centreX-350, centreY-350, 700, 700);
-        
+        CGRect newCircleDimension = CGRectMake(centreX - 350, centreY - 350, 700, 700);
         
         [circle setFrame:newCircleDimension];
         
         circle.layer.cornerRadius = circle.frame.size.width/2;
         circle.clipsToBounds = YES;
         circle.alpha = 1.0;
-        
-        
     }];
     
-    
     return circle;
-    
 }
 
 

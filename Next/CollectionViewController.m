@@ -38,6 +38,9 @@ static NSInteger const NumberOfRequestedObjects = 10;
 
 @implementation CollectionViewController
 
+
+#pragma mark - View lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
    
@@ -45,7 +48,6 @@ static NSInteger const NumberOfRequestedObjects = 10;
     
     self.dataSource = [NSMutableArray array];
     self.allFoursquareObjects = [NSMutableArray array];
-    
     
     // check if we are getting location, so we can fetch weather and foursquare objects
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -55,24 +57,26 @@ static NSInteger const NumberOfRequestedObjects = 10;
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    [self loadSplashScreen];
     
     UISwipeGestureRecognizer *swipeToDelete = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeToDelete)];
     swipeToDelete.direction =UISwipeGestureRecognizerDirectionUp;
     [self.collectionView addGestureRecognizer:swipeToDelete];
     
-    
+    // custom layout for collection view cells
     CustomFlowLayout *flowLayout = (CustomFlowLayout *)self.collectionView.collectionViewLayout;
-    
     flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     flowLayout.itemSize = CGSizeMake(320, 568);
     flowLayout.minimumInteritemSpacing = 0;
     flowLayout.minimumLineSpacing = 0;
     flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
-   
+    
+    [self loadSplashScreen];
+
 }
 
+
+#pragma mark - Helper methods
 
 - (void)handleSwipeToDelete {
     
@@ -82,50 +86,41 @@ static NSInteger const NumberOfRequestedObjects = 10;
 }
 
 
--(void)loadSplashScreen {
+- (void)loadSplashScreen {
     
-    UIView * splashView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height+30)];
-    
+    UIView *splashView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height+30)];
     
     splashView.backgroundColor = [UIColor whiteColor];
-    UIView * circle = [CircleAnimation makeCircleWithCentreX:self.view.bounds.size.width/2 centreY:self.view.bounds.size.height/2];
-    
+    UIView *circle = [CircleAnimation makeCircleWithCentreX:self.view.bounds.size.width/2 centreY:self.view.bounds.size.height/2];
     [splashView addSubview:circle];
     
-    UILabel * nextLabel = [[UILabel alloc]initWithFrame:self.view.bounds];
+    UILabel *nextLabel = [[UILabel alloc]initWithFrame:self.view.bounds];
     nextLabel.textColor = [UIColor whiteColor];
     nextLabel.textAlignment = NSTextAlignmentCenter;
     nextLabel.text = @"Next";
     nextLabel.alpha = 0.0;
-    
-    UIFont * nextFont = [UIFont fontWithName:@"AvenirNext-UltraLight" size:75];
-    
+    UIFont *nextFont = [UIFont fontWithName:@"AvenirNext-UltraLight" size:75];
     [nextLabel setFont:nextFont];
-    
     [splashView addSubview:nextLabel];
     
     [UIView animateWithDuration:3.0 animations:^{
-        
         nextLabel.alpha = 1;
-        
     }];
     
     [self.view addSubview:splashView];
     
+    
     [UIView animateWithDuration:3 delay:6 options:UIViewAnimationOptionTransitionNone animations:^{
-        
         splashView.alpha =0;
         
-    } completion:^(BOOL finished){
-        
+    } completion:^(BOOL finished) {
         [[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-        
     } ];
 
    
 }
 
-  - (void)deleteFoursquareObject {
+- (void)deleteFoursquareObject {
     NSArray *visibleItem = [self.collectionView indexPathsForVisibleItems];
     NSIndexPath *indexPath = [visibleItem firstObject];
     
@@ -202,6 +197,35 @@ static NSInteger const NumberOfRequestedObjects = 10;
 }
 
 
+- (CGFloat)calculateWalkingTime:(FoursquareObject*)foursquareObject {
+    
+    CGFloat minsAway;
+    
+    // "minutes away calculation" : calculation based on average human walking at 50m /min
+    
+    CGFloat lat = [LocationManager sharedInstance].currentLocation.coordinate.latitude;
+    CGFloat lon = [LocationManager sharedInstance].currentLocation.coordinate.longitude;
+    
+    CLLocation *currentLocationCoordinate = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
+    
+    CLLocation *foursquareObjectLocation = [[CLLocation alloc]initWithLatitude:[foursquareObject.lat doubleValue]longitude:[foursquareObject.lon doubleValue]];
+    
+    CLLocationDistance dist = [foursquareObjectLocation distanceFromLocation:currentLocationCoordinate];
+    
+    // "minutes away calculation" : calculation based on average human walking at 50m /min
+    return minsAway = dist/50;
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    [self.colorCache removeAllObjects];
+    [self.collectionView reloadData];
+}
+
+
+
+
 #pragma mark - UICollectionView Data Source
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -221,7 +245,7 @@ static NSInteger const NumberOfRequestedObjects = 10;
     cell.nameLabel.text = currentObject.name;
     cell.shortDescriptionLabel.text = currentObject.shortDescription;
     
-   if ([currentObject.rating floatValue]==0.0) {
+    if ([currentObject.rating floatValue] == 0.0) {
         cell.ratingLabel.text = @"N/A";
         
     } else {
@@ -238,6 +262,7 @@ static NSInteger const NumberOfRequestedObjects = 10;
     UIColor *color = [self.colorCache objectForKey:@(indexPath.item)];
     if (color) {
         cell.imageFilterView.backgroundColor = color;
+        
     } else {
         color = [ColorLibrary randomColor];
         cell.imageFilterView.backgroundColor = color;
@@ -247,33 +272,6 @@ static NSInteger const NumberOfRequestedObjects = 10;
     return cell;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    [self.colorCache removeAllObjects];
-    [self.collectionView reloadData];
-}
-
-
-
-- (CGFloat)calculateWalkingTime:(FoursquareObject*)foursquareObject {
-    
-    CGFloat minsAway;
-    
-    // "minutes away calculation" : calculation based on average human walking at 50m /min
-    
-    CGFloat lat = [LocationManager sharedInstance].currentLocation.coordinate.latitude;
-    CGFloat lon = [LocationManager sharedInstance].currentLocation.coordinate.longitude;
-    
-    CLLocation * currentLocationCoordinate = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
-    
-    CLLocation * foursquareObjectLocation = [[CLLocation alloc]initWithLatitude:[foursquareObject.lat doubleValue]longitude:[foursquareObject.lon doubleValue]];
-    
-    CLLocationDistance dist = [foursquareObjectLocation distanceFromLocation:currentLocationCoordinate];
-    
-    // "minutes away calculation" : calculation based on average human walking at 50m /min
-    return minsAway = dist/50;
-    
-}
 
 
 #pragma mark - Segue

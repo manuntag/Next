@@ -11,7 +11,7 @@
 @implementation FoursquareObject
 
 
--(instancetype)initWithDictionary:(NSDictionary*)dictionary {
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     
     
     if (self = [super init]) {
@@ -47,8 +47,8 @@
         _photoUrl = [NSURL URLWithString:photoUrlString];
          
         _phoneNumber = dictionary[@"venue"][@"contact"][@"phone"]; //formattedPhone ??
-        
     }
+    
     return self;
 }
 

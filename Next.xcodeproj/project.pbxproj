@@ -134,6 +134,8 @@
 				E07696441AA3EECE004E4485 /* FourSquareAPIManager.m */,
 				E017F0251AA801C5005C0EF3 /* CustomFlowLayout.h */,
 				E017F0261AA801C5005C0EF3 /* CustomFlowLayout.m */,
+				8A0891EC1AA40C8600CE27E7 /* ColorLibrary.h */,
+				8A0891ED1AA40C8600CE27E7 /* ColorLibrary.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -199,7 +201,6 @@
 		E0B42DD41A9D0CA500413524 /* Next */ = {
 			isa = PBXGroup;
 			children = (
-				E0B42DDF1A9D0CA500413524 /* Main.storyboard */,
 				8A007B4D1A9FD8B80050CAC1 /* Model */,
 				8A007B4E1A9FD9E00050CAC1 /* Controllers  */,
 				8A007B491A9ECEB40050CAC1 /* Helpers */,
@@ -211,8 +212,7 @@
 		E0B42DD51A9D0CA500413524 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8A0891EC1AA40C8600CE27E7 /* ColorLibrary.h */,
-				8A0891ED1AA40C8600CE27E7 /* ColorLibrary.m */,
+				E0B42DDF1A9D0CA500413524 /* Main.storyboard */,
 				E0B42DE21A9D0CA500413524 /* Images.xcassets */,
 				E0B42DE41A9D0CA500413524 /* LaunchScreen.xib */,
 				E0B42DD91A9D0CA500413524 /* AppDelegate.h */,

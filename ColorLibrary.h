@@ -12,7 +12,7 @@
 @interface ColorLibrary : NSObject
 @property (nonatomic, strong) NSArray * colorArray;
 
-+(UIColor*)randomColor;
++ (UIColor *)randomColor;
 
 //-(instancetype)init;
 

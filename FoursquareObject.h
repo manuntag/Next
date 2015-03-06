@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSString *phoneNumber;
 
 
--(instancetype)initWithDictionary:(NSDictionary*)dictionary; 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary; 
 
 
 @end
