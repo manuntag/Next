@@ -20,32 +20,28 @@ static NSString *const FoursquareLimit =@"20";
 
 //v:20140806
 
-+(FourSquareAPIManager*)sharedInstance{
++ (FourSquareAPIManager *)sharedInstance{
     
     static FourSquareAPIManager *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once( &onceToken, ^{
-    
         sharedInstance = [[self alloc]initWithBaseURL:[NSURL URLWithString:FoursquareBaseURLString]];
-    
     });
     
     return sharedInstance;
     
 }
 
--(instancetype)initWithBaseURL:(NSURL *)url {
+- (instancetype)initWithBaseURL:(NSURL *)url {
     
     if (self = [super initWithBaseURL:url]) {
-        
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        
     }
     return self;
 }
 
 
--(void)getFoursquareObjectWithLocation:(CLLocation *)location randomReccomendation:(NSString*)randomReccomendation completion:(void (^)(FoursquareObject *))completion{
+- (void)getFoursquareObjectWithLocation:(CLLocation *)location randomReccomendation:(NSString *)randomReccomendation completion:(void (^)(FoursquareObject *))completion{
     
     NSMutableDictionary * parameters = [NSMutableDictionary dictionary];
     parameters[@"client_id"] = FoursquareClientIDString;
@@ -86,10 +82,7 @@ static NSString *const FoursquareLimit =@"20";
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"FAILURE TO RETRIEVE FOURSQAURE DICTIONARY DATA");
     }];
-    
-    
-    
-    
+   
 }
 
 

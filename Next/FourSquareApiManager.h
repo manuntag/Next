@@ -14,9 +14,9 @@
 
 @property (nonatomic, strong) NSDictionary * dictionary;
 
-+(FourSquareAPIManager*)sharedInstance;
++ (FourSquareAPIManager *)sharedInstance;
 
--(void)getFoursquareObjectWithLocation:(CLLocation *)location randomReccomendation:(NSString*)randomReccomendation completion:(void (^)(FoursquareObject *))completion;
+- (void)getFoursquareObjectWithLocation:(CLLocation *)location randomReccomendation:(NSString *)randomReccomendation completion:(void (^)(FoursquareObject *))completion;
 
 
 @end
