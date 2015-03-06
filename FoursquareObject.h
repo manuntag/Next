@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSURL *photoUrl;
 @property (nonatomic, strong) NSString *tip;
 @property (nonatomic, strong) NSString *phoneNumber;
+@property (nonatomic, strong) NSString * address;
 
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary; 

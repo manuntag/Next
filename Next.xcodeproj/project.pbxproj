@@ -15,6 +15,7 @@
 		8A0891F01AA4F72A00CE27E7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0891EF1AA4F72A00CE27E7 /* MapKit.framework */; };
 		8A25F3F51A9D240400123BCF /* Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A25F3F41A9D240400123BCF /* Time.m */; };
 		8A9D6BF21AA7E1D500C506B4 /* CircleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D6BF11AA7E1D500C506B4 /* CircleAnimation.m */; };
+		8AAAD56D1AA988A000B603F6 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AAAD56C1AA988A000B603F6 /* MessageUI.framework */; };
 		E009EDD11A9E8D3D00C0FB18 /* WeatherAPIMannager.m in Sources */ = {isa = PBXBuildFile; fileRef = E009EDD01A9E8D3D00C0FB18 /* WeatherAPIMannager.m */; };
 		E009EDD41A9ECFBE00C0FB18 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = E009EDD31A9ECFBE00C0FB18 /* Weather.m */; };
 		E017F0271AA801C5005C0EF3 /* CustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E017F0261AA801C5005C0EF3 /* CustomFlowLayout.m */; };
@@ -59,6 +60,7 @@
 		8A25F3F41A9D240400123BCF /* Time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Time.m; path = ../Time.m; sourceTree = "<group>"; };
 		8A9D6BF01AA7E1D500C506B4 /* CircleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleAnimation.h; path = ../CircleAnimation.h; sourceTree = "<group>"; };
 		8A9D6BF11AA7E1D500C506B4 /* CircleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleAnimation.m; path = ../CircleAnimation.m; sourceTree = "<group>"; };
+		8AAAD56C1AA988A000B603F6 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E009EDCF1A9E8D3D00C0FB18 /* WeatherAPIMannager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherAPIMannager.h; sourceTree = "<group>"; };
 		E009EDD01A9E8D3D00C0FB18 /* WeatherAPIMannager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherAPIMannager.m; sourceTree = "<group>"; };
 		E009EDD21A9ECFBE00C0FB18 /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AAAD56D1AA988A000B603F6 /* MessageUI.framework in Frameworks */,
 				8A0891F01AA4F72A00CE27E7 /* MapKit.framework in Frameworks */,
 				E0E1FD591A9D32AF004749AF /* CoreLocation.framework in Frameworks */,
 				1F5CFF21A79C61DA107FD0A5 /* libPods.a in Frameworks */,
@@ -171,6 +174,7 @@
 		D4CD55E6E9E516B0CF6A3B18 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8AAAD56C1AA988A000B603F6 /* MessageUI.framework */,
 				8A0891EF1AA4F72A00CE27E7 /* MapKit.framework */,
 				E0E1FD581A9D32AF004749AF /* CoreLocation.framework */,
 				244FC26327F36198BC9C7AD8 /* libPods.a */,

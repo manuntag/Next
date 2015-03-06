@@ -47,6 +47,8 @@
         _photoUrl = [NSURL URLWithString:photoUrlString];
          
         _phoneNumber = dictionary[@"venue"][@"contact"][@"phone"]; //formattedPhone ??
+        _address = dictionary[@"venue"][@"location"][@"address"]; 
+        
     }
     
     return self;

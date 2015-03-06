@@ -9,9 +9,9 @@
 #import "DetailViewController.h"
 #import "FoursquareObject.h"
 #import "HexColor.h"
+#import <MessageUI/MessageUI.h>
 
-
-@interface DetailViewController ()
+@interface DetailViewController ()<MFMessageComposeViewControllerDelegate>
 
 
 @end
@@ -221,5 +221,44 @@ MKRoute * routeDetails;
 - (IBAction)backButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result
+{
+    switch (result) {
+        case MessageComposeResultCancelled:
+            break;
+            
+        case MessageComposeResultFailed:
+        {
+            UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to send SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [warningAlert show];
+            break;
+        }
+            
+        case MessageComposeResultSent:
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)shareButton:(id)sender {
+   
+    NSString *message = [NSString stringWithFormat:@"Let's meet at %@, the address is %@", self.detailFoursquareObject.name, self.detailFoursquareObject.address];
+    
+    MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+    messageController.messageComposeDelegate = self;
+    
+    [messageController setBody:message];
+    
+    [self presentViewController:messageController animated:YES completion:nil];
+
+    
+}
+
 
 @end
