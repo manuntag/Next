@@ -42,7 +42,7 @@ MKRoute * routeDetails;
 }
 
 
--(void)setUpGestureRecognizers {
+- (void)setUpGestureRecognizers {
     
     UISwipeGestureRecognizer * swipeUpToRevealMap = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(slideUpToRevealMap:)];
     swipeUpToRevealMap.direction =UISwipeGestureRecognizerDirectionUp;
@@ -60,91 +60,52 @@ MKRoute * routeDetails;
     UISwipeGestureRecognizer * swipeRightToPhone = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(phoneContact:)];
     swipeRightToPhone.direction = UISwipeGestureRecognizerDirectionRight;
     [self.contactView addGestureRecognizer:swipeRightToPhone];
-    
 }
 
 
--(void)phoneContact:(UIGestureRecognizer*)gestureRecognizer {
-    
+- (void)phoneContact:(UIGestureRecognizer*)gestureRecognizer {
     
     NSString * phoneNumber =  self.detailFoursquareObject.phoneNumber;
-    
     [[UIApplication sharedApplication]openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", phoneNumber]]];
-    
 }
 
 
--(void)swipeDownToDismissModal:(UIGestureRecognizer*)gestureRecognizer {
+- (void)swipeDownToDismissModal:(UIGestureRecognizer*)gestureRecognizer {
     
-  [UIView animateWithDuration:1.0 animations:^{
-      
-      self.view.frame = CGRectOffset(self.view.frame, 0, 250);
-      
-  }];
+    [UIView animateWithDuration:1.0 animations:^{
+          self.view.frame = CGRectOffset(self.view.frame, 0, 250);
+      }];
     
     [self performSelector:@selector(dismissModalView) withObject:self afterDelay:1.0];
 }
 
--(void)dismissModalView {
+
+- (void)dismissModalView {
     
   [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
 
-//-(void)swipeDownToHideMapAction:(UIGestureRecognizer*)gestureRecognizer {
-//    
-//    [UIView animateWithDuration:1.0 animations:^{
-//        
-//        if (self.directionsView.frame.origin.y<=520) {
-//            
-//             self.directionsView.frame = CGRectOffset(self.directionsView.frame, 0, 200);
-//        }
-//        
-//    }];
-//}
-//
-//-(void)slideUpToRevealMap:(UIGestureRecognizer*)gestureRecognizer {
-//    
-//    [UIView animateWithDuration:1.0 animations:^{
-//        
-//        self.directionsTextView.text = self.allSteps;
-//        
-//        if (self.directionsView.frame.origin.y>=415) {
-//        
-//            self.directionsView.frame = CGRectOffset(self.directionsView.frame, 0, -200);
-//            
-//        }
-//        
-//    }];
-//    
-//}
-
-
-
--(void)swipeDownToHideMapAction:(UIGestureRecognizer*)gestureRecognizer {
+- (void)swipeDownToHideMapAction:(UIGestureRecognizer*)gestureRecognizer {
     
     [UIView animateWithDuration:1.0 animations:^{
-        
         if (self.directionsView.frame.origin.y<=520) {
-            
             self.directionsView.frame = CGRectOffset(self.directionsView.frame, 0, 200);
         }
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.5 animations:^{
             self.directionArrowImageView.transform = CGAffineTransformRotate(self.directionArrowImageView.transform, - M_PI);
         }];
-        
     }];
 }
 
--(void)slideUpToRevealMap:(UIGestureRecognizer*)gestureRecognizer {
+
+- (void)slideUpToRevealMap:(UIGestureRecognizer*)gestureRecognizer {
     
     [UIView animateWithDuration:1.0 animations:^{
         self.directionsTextView.text = self.allSteps;
         if (self.directionsView.frame.origin.y>=415) {
             self.directionsView.frame = CGRectOffset(self.directionsView.frame, 0, -200);
-            
         }
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.5 animations:^{
@@ -177,7 +138,6 @@ MKRoute * routeDetails;
         marker.title = self.detailFoursquareObject.name;
         
         [self.fourSquareObjectMapView addAnnotation:marker];
-    
     }
 }
 
@@ -198,7 +158,6 @@ MKRoute * routeDetails;
         
         
         if (error) {
-            
             NSLog(@"Error %@", error.description);
             
         }else {
@@ -214,11 +173,8 @@ MKRoute * routeDetails;
                 self.allSteps = [self.allSteps stringByAppendingString:@"\n\n"];
                 
             }
-            
         }
-        
     }];
-
 }
 
 
@@ -256,4 +212,5 @@ MKRoute * routeDetails;
 - (IBAction)backButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 @end

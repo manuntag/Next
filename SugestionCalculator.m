@@ -11,45 +11,33 @@
 
 @implementation SugestionCalculator
 
--(void)calculateReccomendationArray:(NSString*)partOfWeek sectionOfDay:(NSString*)sectionOfDay mainWeather:(NSString*)mainWeather{
+-(void)calculateReccomendationArray:(NSString *)partOfWeek sectionOfDay:(NSString *)sectionOfDay mainWeather:(NSString *)mainWeather{
   
     Reccomendations * reccomendation = [[Reccomendations alloc]init];
 
     if ([partOfWeek isEqualToString:@"weekend"] && [sectionOfDay isEqualToString:@"morning"] && [mainWeather isEqualToString:@"Clear"]) {
-        
         self.calculatedReccomendationArray =  [NSArray arrayWithArray:[reccomendation loadWeekendActivitiesClearWeather]];
         
-        
-    }else if ([partOfWeek isEqualToString:@"weekday"] && [sectionOfDay isEqualToString:@"morning"]) {
-    
+    } else if ([partOfWeek isEqualToString:@"weekday"] && [sectionOfDay isEqualToString:@"morning"]) {
         self.calculatedReccomendationArray =  [NSArray arrayWithArray:[reccomendation loadweekdayActivitiesMorning]];
         
-        
-    }else if ([partOfWeek isEqualToString:@"weekday"] && [sectionOfDay isEqualToString:@"night"]) {
-    
+    } else if ([partOfWeek isEqualToString:@"weekday"] && [sectionOfDay isEqualToString:@"night"]) {
         self.calculatedReccomendationArray = [reccomendation loadweekdayActivitiesNight];
 
-        
-    }else if ([partOfWeek isEqualToString:@"weekend"] && [sectionOfDay isEqualToString:@"morning"]) {
-    
+    } else if ([partOfWeek isEqualToString:@"weekend"] && [sectionOfDay isEqualToString:@"morning"]) {
         self.calculatedReccomendationArray = [reccomendation loadWeekendActivitiesMorning];
     
-    }else if ([partOfWeek isEqualToString:@"weekend"] && [sectionOfDay isEqualToString:@"night"] ) {
-    
+    } else if ([partOfWeek isEqualToString:@"weekend"] && [sectionOfDay isEqualToString:@"night"] ) {
         self.calculatedReccomendationArray = [reccomendation loadweekendActivitiesNight];
-    
     }
 
 }
 
--(NSString *)randomRecomendedSection {
+- (NSString *)randomRecomendedSection {
 
     NSInteger randomNumber = arc4random() % self.calculatedReccomendationArray.count;
-    
     NSString *randomRecomendation = [self.calculatedReccomendationArray objectAtIndex:randomNumber];
-
     return randomRecomendation;
-
 }
 
 

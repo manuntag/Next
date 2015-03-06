@@ -10,17 +10,17 @@
 
 @interface Reccomendations : NSObject
 
-@property (nonatomic, strong) NSArray * weekendActivitiesMorning;
-@property (nonatomic, strong) NSArray * weekendActivitiesClearWeather;
-@property (nonatomic, strong) NSArray * weekendActivitiesNight;
-@property (nonatomic, strong) NSArray * weekdayActivitiesMorning;
-@property (nonatomic, strong) NSArray * weekdayActivitiesNight;
+@property (nonatomic, strong) NSArray *weekendActivitiesMorning;
+@property (nonatomic, strong) NSArray *weekendActivitiesClearWeather;
+@property (nonatomic, strong) NSArray *weekendActivitiesNight;
+@property (nonatomic, strong) NSArray *weekdayActivitiesMorning;
+@property (nonatomic, strong) NSArray *weekdayActivitiesNight;
 
--(NSArray*)loadWeekendActivitiesMorning;
--(NSArray*)loadweekendActivitiesNight;
--(NSArray*)loadweekdayActivitiesMorning;
--(NSArray*)loadweekdayActivitiesNight;
--(NSArray*)loadWeekendActivitiesClearWeather;
+- (NSArray *)loadWeekendActivitiesMorning;
+- (NSArray *)loadweekendActivitiesNight;
+- (NSArray *)loadweekdayActivitiesMorning;
+- (NSArray *)loadweekdayActivitiesNight;
+- (NSArray *)loadWeekendActivitiesClearWeather;
 
 
 

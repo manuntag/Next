@@ -10,11 +10,10 @@
 
 @interface SugestionCalculator : NSObject
 
-@property (nonatomic, strong) NSArray * calculatedReccomendationArray;
+@property (nonatomic, strong) NSArray *calculatedReccomendationArray;
 
--(void)calculateReccomendationArray:(NSString*)partOfWeek sectionOfDay:(NSString*)sectionOfDay mainWeather:(NSString*)mainWeather;
-
--(NSString*)randomRecomendedSection; 
+- (void)calculateReccomendationArray:(NSString *)partOfWeek sectionOfDay:(NSString *)sectionOfDay mainWeather:(NSString *)mainWeather;
+- (NSString *)randomRecomendedSection;
 
 
 @end

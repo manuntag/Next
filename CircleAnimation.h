@@ -13,7 +13,7 @@
 @interface CircleAnimation : NSObject
 
 
-+(UIView*)makeCircleWithCentreX:(CGFloat)centreX centreY:(CGFloat)centreY;
++ (UIView *)makeCircleWithCentreX:(CGFloat)centreX centreY:(CGFloat)centreY;
 
 
 

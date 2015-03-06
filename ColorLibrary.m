@@ -18,26 +18,26 @@
 //grey : #485956, #524942
 
 
-+ (UIColor*)randomColor {
++ (UIColor *)randomColor {
     
-    UIColor * darkBlue1 = [UIColor colorWithHexString:@"#0A4A82" alpha:1.0];
-    UIColor * darkBlue2 = [UIColor colorWithHexString:@"#3f526f" alpha:1.0];
+    UIColor *darkBlue1 = [UIColor colorWithHexString:@"#0A4A82" alpha:1.0];
+    UIColor *darkBlue2 = [UIColor colorWithHexString:@"#3f526f" alpha:1.0];
     
-    UIColor * greyBlue1 = [UIColor colorWithHexString:@"#30699B" alpha:1.0];
-    UIColor * greyBlue2 = [UIColor colorWithHexString:@"#4F759B" alpha:1.0];
-    UIColor * greyBlue3 = [UIColor colorWithHexString:@"#3e5e6f" alpha:1.0];
-    UIColor * greyBlue4 = [UIColor colorWithHexString:@"#3c566b" alpha:1.0];
-    UIColor * greyBlue5 = [UIColor colorWithHexString:@"#355e68" alpha:1.0];
+    UIColor *greyBlue1 = [UIColor colorWithHexString:@"#30699B" alpha:1.0];
+    UIColor *greyBlue2 = [UIColor colorWithHexString:@"#4F759B" alpha:1.0];
+    UIColor *greyBlue3 = [UIColor colorWithHexString:@"#3e5e6f" alpha:1.0];
+    UIColor *greyBlue4 = [UIColor colorWithHexString:@"#3c566b" alpha:1.0];
+    UIColor *greyBlue5 = [UIColor colorWithHexString:@"#355e68" alpha:1.0];
     
-    UIColor * purple1 = [UIColor colorWithHexString:@"#5D5179" alpha:1.0];
+    UIColor *purple1 = [UIColor colorWithHexString:@"#5D5179" alpha:1.0];
     
-    UIColor * green1 = [UIColor colorWithHexString:@"#1c6d6a" alpha:1.0];
-    UIColor * green2 = [UIColor colorWithHexString:@"#137d79" alpha:1.0];
-    UIColor * green3 = [UIColor colorWithHexString:@"#247e6f" alpha:1.0];
-    UIColor * green4 = [UIColor colorWithHexString:@"#21797c" alpha:1.0];
+    UIColor *green1 = [UIColor colorWithHexString:@"#1c6d6a" alpha:1.0];
+    UIColor *green2 = [UIColor colorWithHexString:@"#137d79" alpha:1.0];
+    UIColor *green3 = [UIColor colorWithHexString:@"#247e6f" alpha:1.0];
+    UIColor *green4 = [UIColor colorWithHexString:@"#21797c" alpha:1.0];
     
-    UIColor * grey1 = [UIColor colorWithHexString:@"#485956" alpha:1.0];
-    UIColor * grey2 = [UIColor colorWithHexString:@"#524942" alpha:1.0];
+    UIColor *grey1 = [UIColor colorWithHexString:@"#485956" alpha:1.0];
+    UIColor *grey2 = [UIColor colorWithHexString:@"#524942" alpha:1.0];
     
     NSArray *myColorArray = [NSArray arrayWithObjects:darkBlue1,darkBlue2,greyBlue1,greyBlue2 , greyBlue3,greyBlue4, greyBlue5, purple1, green1, green2, green3, green4, grey1, grey2,  nil];
 

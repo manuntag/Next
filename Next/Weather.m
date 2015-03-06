@@ -14,8 +14,8 @@
 {
     self = [super init];
     if (self) {
-        self.mainDescription = dictionary[@"main"];
-        self.detailDescription = dictionary[@"description"];
+        _mainDescription = dictionary[@"main"];
+        _detailDescription = dictionary[@"description"];
     }
     return self;
 }
