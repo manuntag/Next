@@ -39,6 +39,15 @@ MKRoute * routeDetails;
     
     self.directionsView.layer.cornerRadius = 10;
    
+//    if([self.detailFoursquareObject.phoneNumber isEqualToString:@""] || self.detailFoursquareObject.phoneNumber ==(id) [NSNull null] || [self.detailFoursquareObject.phoneNumber length] == 0  ) {
+//        
+//        self.contactView.frame =CGRectOffset(self.contactView.frame, 0, 50 );
+//        self.directionsView.frame = CGRectOffset(self.directionsView.frame, 0, 50);
+//        
+//    }
+
+    
+    
 }
 
 

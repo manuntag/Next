@@ -88,7 +88,7 @@
     if (status == kCLAuthorizationStatusDenied || status == kCLAuthorizationStatusRestricted) {
 
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Location access denied"
-                                                                                 message:@"Please open this app's settings and allow location access 'While Using the app'."
+                                                                                 message:@"Please open the settings and allow location access 'While Using the app'."
                                                                           preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
@@ -118,7 +118,7 @@
         [self stopUpdatingLocation];
     } else {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Location retreiving error"
-                                                                                 message:@"Please check your network connection or that you are not in airplane mode!"
+                                                                                 message:@"Please check your network connection or the Location Services Settings"
                                                                           preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry"
