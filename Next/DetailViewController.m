@@ -92,14 +92,48 @@ MKRoute * routeDetails;
 }
 
 
+//-(void)swipeDownToHideMapAction:(UIGestureRecognizer*)gestureRecognizer {
+//    
+//    [UIView animateWithDuration:1.0 animations:^{
+//        
+//        if (self.directionsView.frame.origin.y<=520) {
+//            
+//             self.directionsView.frame = CGRectOffset(self.directionsView.frame, 0, 200);
+//        }
+//        
+//    }];
+//}
+//
+//-(void)slideUpToRevealMap:(UIGestureRecognizer*)gestureRecognizer {
+//    
+//    [UIView animateWithDuration:1.0 animations:^{
+//        
+//        self.directionsTextView.text = self.allSteps;
+//        
+//        if (self.directionsView.frame.origin.y>=415) {
+//        
+//            self.directionsView.frame = CGRectOffset(self.directionsView.frame, 0, -200);
+//            
+//        }
+//        
+//    }];
+//    
+//}
+
+
+
 -(void)swipeDownToHideMapAction:(UIGestureRecognizer*)gestureRecognizer {
     
     [UIView animateWithDuration:1.0 animations:^{
         
         if (self.directionsView.frame.origin.y<=520) {
             
-             self.directionsView.frame = CGRectOffset(self.directionsView.frame, 0, 200);
+            self.directionsView.frame = CGRectOffset(self.directionsView.frame, 0, 200);
         }
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.directionArrowImageView.transform = CGAffineTransformRotate(self.directionArrowImageView.transform, - M_PI);
+        }];
         
     }];
 }
@@ -107,18 +141,19 @@ MKRoute * routeDetails;
 -(void)slideUpToRevealMap:(UIGestureRecognizer*)gestureRecognizer {
     
     [UIView animateWithDuration:1.0 animations:^{
-        
         self.directionsTextView.text = self.allSteps;
-        
         if (self.directionsView.frame.origin.y>=415) {
-        
             self.directionsView.frame = CGRectOffset(self.directionsView.frame, 0, -200);
             
         }
-        
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.directionArrowImageView.transform = CGAffineTransformRotate(self.directionArrowImageView.transform, M_PI);
+        }];
     }];
     
 }
+
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     

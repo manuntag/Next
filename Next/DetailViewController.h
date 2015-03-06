@@ -31,8 +31,10 @@
 
 @property (strong, nonatomic) IBOutlet UIView *contactView;
 
-
 @property (nonatomic, strong) NSString *allSteps;
+
+@property (weak, nonatomic) IBOutlet UIImageView *directionArrowImageView;
+
 
 - (IBAction)backButtonPressed:(id)sender;
 
